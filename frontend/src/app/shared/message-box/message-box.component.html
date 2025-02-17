@@ -1,0 +1,13 @@
+<div
+  [ngClass]="[
+    'alert',
+    'd-flex',
+    'flex-row',
+    'mx-3',
+    'mt-3',
+    variant === 'danger' ? 'alert-danger' : 'alert-success'
+  ]"
+  role="alert"
+>
+  {{ message }}
+</div>

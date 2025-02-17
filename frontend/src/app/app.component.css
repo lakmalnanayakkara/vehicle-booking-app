@@ -1,0 +1,51 @@
+.nav-start-btn {
+  background: transparent;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.side-nav-btn {
+  padding: 0.25rem, 0.75rem 0.25rem, 0.75rem;
+  line-height: 1;
+  font-size: 1.25rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.site-container {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.small-container {
+  max-width: 600px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+.side-navbar {
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: rgba(33, 37, 41, 1);
+  transition: 0.5s;
+}
+.site-container {
+  transition: 0.4s;
+}
+.active-cont {
+  margin-left: 240px;
+}
+
+.active-nav {
+  left: 0px;
+}
