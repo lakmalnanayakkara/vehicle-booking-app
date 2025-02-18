@@ -10,13 +10,27 @@ import { LoadingBoxComponent } from './shared/loading-box/loading-box.component'
 import { MessageBoxComponent } from './shared/message-box/message-box.component';
 import { RatingsComponent } from './shared/ratings/ratings.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
 
 @NgModule({
-  declarations: [AppComponent, SignInScreenComponent, LoadingBoxComponent, MessageBoxComponent, RatingsComponent, HomeScreenComponent],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule],
-  providers: [
-    provideAnimationsAsync()
+  declarations: [
+    AppComponent,
+    SignInScreenComponent,
+    LoadingBoxComponent,
+    MessageBoxComponent,
+    RatingsComponent,
+    HomeScreenComponent,
+    SignUpScreenComponent,
   ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

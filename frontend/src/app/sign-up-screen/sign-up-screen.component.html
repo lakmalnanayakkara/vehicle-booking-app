@@ -2,9 +2,9 @@
   class="container d-flex flex-row flex-wrap-reverse display-full align-items-center"
 >
   <div class="d-flex flex-wrap flex-column col-md-6">
-    <h1 class="mb-3 d-flex justify-content-center">Sign In</h1>
+    <h1 class="mb-3 d-flex justify-content-center">Sign Up</h1>
     <form
-      [formGroup]="signInForm"
+      [formGroup]="signUpForm"
       (ngSubmit)="onSubmit()"
       class="flex-grow-1 w-100"
     >
@@ -18,15 +18,15 @@
         />
         <mat-error
           *ngIf="
-            signInForm.controls.username.touched &&
-            signInForm.controls.username.invalid
+            signUpForm.controls.username.touched &&
+            signUpForm.controls.username.invalid
           "
         >
-          <span *ngIf="signInForm.controls.username.errors.pattern"
-            >This is invalid name,Please Check</span
+          <span *ngIf="signUpForm.controls.username.errors.pattern"
+            >This is invalid username,Please Check</span
           >
-          <span *ngIf="signInForm.controls.username.hasError('required')"
-            >Name is required</span
+          <span *ngIf="signUpForm.controls.username.hasError('required')"
+            >Username is required</span
           >
         </mat-error>
       </mat-form-field>
@@ -34,14 +34,14 @@
         <mat-label>Password</mat-label>
         <input
           matInput
-          placeholder=""
+          placeholder="John@example.com"
           formControlName="password"
-          type="password"
+          required
         />
-        <mat-error *ngIf="signInForm.controls.password.hasError('required')"
+        <mat-error *ngIf="signUpForm.controls.password.hasError('required')"
           >Password is required</mat-error
         >
-        <mat-error *ngIf="signInForm.controls.password.hasError('password')"
+        <mat-error *ngIf="signUpForm.controls.password.hasError('password')"
           >This is invalid password, Please Check</mat-error
         >
       </mat-form-field>
@@ -49,15 +49,13 @@
         <button
           class="btn btn-success"
           type="submit"
-          [disabled]="signInForm.invalid || signInForm.untouched"
+          [disabled]="signUpForm.invalid || signUpForm.untouched"
         >
           Submit
         </button>
         <div class="ms-2">
-          New Customer?
-          <a routerLink="/sign-up" class="text-decoration-none"
-            >Create an account</a
-          >
+          Already have an account?
+          <a routerLink="/sign-in" class="text-decoration-none">Sign In</a>
         </div>
       </div>
     </form>

@@ -2,14 +2,14 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-sign-in-screen',
+  selector: 'app-sign-up-screen',
   standalone: false,
-  templateUrl: './sign-in-screen.component.html',
-  styleUrl: './sign-in-screen.component.css',
+  templateUrl: './sign-up-screen.component.html',
+  styleUrl: './sign-up-screen.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class SignInScreenComponent {
-  signInForm = new FormGroup({
+export class SignUpScreenComponent {
+  signUpForm = new FormGroup({
     username: new FormControl(undefined, [
       Validators.required,
       Validators.pattern(''),

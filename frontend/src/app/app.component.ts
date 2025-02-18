@@ -13,6 +13,7 @@ export class AppComponent {
   isError = false;
   variant = 'success';
   message = 'Not Found';
+  isUserSignIn = false;
 
   sideNavOpen() {
     this.isSideNavOpen = !this.isSideNavOpen;

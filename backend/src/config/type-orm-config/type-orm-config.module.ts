@@ -12,14 +12,14 @@ import * as mysql from 'mysql2/promise';
         const type = configService.get<string>('DB_TYPE');
         const host = configService.get<string>('DB_HOST');
         const port = configService.get<number>('DB_PORT');
-        const username = configService.get<string>('DB_USERNAME');
+        const user = configService.get<string>('DB_USERNAME');
         const password = configService.get<string>('DB_PASSWORD');
         const database = configService.get<string>('DB_NAME');
 
         const connection = await mysql.createConnection({
           host,
           port,
-          user: username,
+          user,
           password,
         });
 
@@ -32,7 +32,7 @@ import * as mysql from 'mysql2/promise';
           type,
           host,
           port,
-          username,
+          user,
           password,
           database,
           autoLoadEntities: true,
