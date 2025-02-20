@@ -14,13 +14,13 @@ import * as mysql from 'mysql2/promise';
         const host = configService.getDbConfig().host;
         const port = configService.getDbConfig().port;
         const database = configService.getDbConfig().name;
-        const user = configService.getDbConfig().username;
+        const username = configService.getDbConfig().username;
         const password = configService.getDbConfig().password;
 
         const connection = await mysql.createConnection({
           host,
           port,
-          user,
+          user: username,
           password,
         });
 
@@ -33,11 +33,11 @@ import * as mysql from 'mysql2/promise';
           type,
           host,
           port,
-          user,
+          username,
           password,
           database,
-          autoLoadEntities: true,
-          synchronize: true,
+          entities: ['dist/**/*.entity.js'],
+          synchronize: false,
         };
       },
     }),
