@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
-import { ConfigurationModule } from './config/configuration/configuration.module';
-import { TypeOrmConfigModule } from './config/type-orm-config/type-orm-config.module';
+import { ConfigurationModule } from './configurations/config/configuration.module';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmConfigModule } from './configurations/typeorm/type-orm.module';
 
 @Module({
-  imports: [UserModule, ConfigurationModule, TypeOrmConfigModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    UserModule,
+    ConfigurationModule,
+    TypeOrmConfigModule,
+  ],
   controllers: [],
   providers: [],
 })
