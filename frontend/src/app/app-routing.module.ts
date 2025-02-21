@@ -8,14 +8,17 @@ const routes: Routes = [
   {
     path: '',
     component: HomeScreenComponent,
+    data: { title: 'Best Travel Agent in Sri Lanka | Home' },
   },
   {
     path: 'sign-in',
     component: SignInScreenComponent,
+    data: { title: 'Leader in MultiDay Tours | Sign In' },
   },
   {
     path: 'sign-up',
     component: SignUpScreenComponent,
+    data: { title: 'Join With Us | Sign Up' },
   },
 ];
 
