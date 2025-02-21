@@ -1,15 +1,24 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { UserSignUpDTO } from './dto/user-signup.dto';
 import { User } from './entity/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import type { Repository } from 'typeorm';
+import { Repository } from 'typeorm';
+import { AuthService } from './../auth/auth.service';
+import type { UserSignInDTO } from './dto/user-signin.dto';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectRepository(User) private userRepo: Repository<User>) {}
+  constructor(
+    @InjectRepository(User) private userRepo: Repository<User>,
+    private authService: AuthService,
+  ) {}
 
-  public async userSigUp(userSignUpDTO: UserSignUpDTO): Promise<User> {
+  public async userSignUp(userSignUpDTO: UserSignUpDTO): Promise<any> {
     const { username, password, role } = userSignUpDTO;
     const existingUser = await this.userRepo.findOne({ where: { username } });
     if (existingUser) {
@@ -27,7 +36,28 @@ export class UserService {
         isActive: true,
       });
 
-      return await this.userRepo.save(user);
+      await this.userRepo.save(user);
+      const access_token = this.authService.generateToken(user);
+
+      return { username: user.username, role: user.role, access_token };
+    }
+  }
+
+  public async userSignIn(userSignInDTO: UserSignInDTO): Promise<any> {
+    const { username } = userSignInDTO;
+    const existingUser = await this.userRepo.findOne({ where: { username } });
+    if (!existingUser) {
+      throw new UnauthorizedException('Unauthorized access', {
+        cause: new Error(),
+        description: "Username doesn't exist.",
+      });
+    } else {
+      const access_token = this.authService.generateToken(existingUser);
+      return {
+        username: existingUser.username,
+        role: existingUser.role,
+        access_token,
+      };
     }
   }
 }

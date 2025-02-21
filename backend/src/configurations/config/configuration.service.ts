@@ -39,4 +39,8 @@ export class ConfigurationService {
   public getDbConfig() {
     return this.databaseConfig;
   }
+
+  public getJwtConfig() {
+    return this.jwtConfig;
+  }
 }
