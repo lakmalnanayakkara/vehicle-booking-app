@@ -10,7 +10,7 @@ export const passwordMatchValidator: ValidatorFn = (
     return null;
   }
 
-  password === confirmPassword
+  password !== confirmPassword
     ? control.get('confirmPassword').setErrors({ passwordMismatch: true })
     : control.get('confirmPassword').setErrors(null);
   return null;

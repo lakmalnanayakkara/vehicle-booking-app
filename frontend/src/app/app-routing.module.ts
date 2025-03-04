@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeScreenComponent,
-    data: { title: 'Best Travel Agent in Sri Lanka | Home' },
+    data: { title: 'Best Vehicle Rental Place in Sri Lanka | Home' },
   },
   {
     path: 'sign-in',

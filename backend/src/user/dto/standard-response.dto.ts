@@ -8,5 +8,5 @@ export class StandardResponse {
   message: string;
 
   @IsObject()
-  values: { username: string; role: string; access_token: string };
+  data: { username: string; role: string; access_token: string };
 }
