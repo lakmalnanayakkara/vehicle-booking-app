@@ -22,7 +22,7 @@ export class UserController {
     const response: StandardResponse = {
       code: 200,
       message: 'SUCCESSFUL',
-      values: data,
+      data: data,
     };
     return response;
   }
@@ -36,7 +36,7 @@ export class UserController {
     const response: StandardResponse = {
       code: 200,
       message: 'SUCCESSFUL',
-      values: data,
+      data: data,
     };
     return response;
   }

@@ -12,13 +12,16 @@ import { RatingsComponent } from './shared/ratings/ratings.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
-import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
+import { ToastrModule } from 'ngx-toastr';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { CarCardsComponent } from './cards/car-cards/car-cards.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTimepickerModule} from '@angular/material/timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Add this for animations
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
     FormsModule,
@@ -42,9 +46,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
     HttpClientModule,
     MatNativeDateModule,
     MatTimepickerModule,
-    BrowserAnimationsModule
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      preventDuplicates: true,
+      positionClass: 'toast-top-center',
+      closeButton: true,
+      progressBar: true,
+      newestOnTop: true,
+      tapToDismiss: true,
+      progressAnimation: 'decreasing',
+    }),
+  
   ],
-  providers: [],
+  providers: [
+    UserService,
+    provideNativeDateAdapter(),
+    provideAnimationsAsync(),
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
