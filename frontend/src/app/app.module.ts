@@ -12,6 +12,13 @@ import { RatingsComponent } from './shared/ratings/ratings.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CarCardsComponent } from './cards/car-cards/car-cards.component';
+import { BookingComponent } from './booking/booking.component';
+import { HomeComponent } from './home/home.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatTimepickerModule} from '@angular/material/timepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Add this for animations
 
 @NgModule({
   declarations: [
@@ -22,6 +29,9 @@ import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component
     RatingsComponent,
     HomeScreenComponent,
     SignUpScreenComponent,
+    CarCardsComponent,
+    BookingComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,8 +39,12 @@ import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    MatTimepickerModule,
+    BrowserAnimationsModule
   ],
-  providers: [provideAnimationsAsync()],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
