@@ -1,4 +1,4 @@
-<ng-container *ngIf="!isUserSignIn">
+ <ng-container *ngIf="!isUserSignIn">
   <router-outlet></router-outlet>
 </ng-container>
 <app-loading-box *ngIf="isLoading"></app-loading-box>
@@ -6,7 +6,7 @@
   *ngIf="isError"
   [variant]="variant"
   [message]="message"
-></app-message-box>
+></app-message-box> 
 <div
   [ngClass]="[
     'd-flex',

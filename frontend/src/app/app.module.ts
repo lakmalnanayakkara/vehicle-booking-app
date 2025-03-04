@@ -13,10 +13,15 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
 import { UserService } from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { CarCardsComponent } from './cards/car-cards/car-cards.component';
+import { BookingComponent } from './booking/booking.component';
+import { HomeComponent } from './home/home.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatTimepickerModule} from '@angular/material/timepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Add this for animations
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,9 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     RatingsComponent,
     HomeScreenComponent,
     SignUpScreenComponent,
+    CarCardsComponent,
+    BookingComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +44,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatNativeDateModule,
+    MatTimepickerModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       preventDuplicates: true,
@@ -46,11 +56,13 @@ import { provideNativeDateAdapter } from '@angular/material/core';
       tapToDismiss: true,
       progressAnimation: 'decreasing',
     }),
+  
   ],
   providers: [
-    provideAnimationsAsync(),
     UserService,
     provideNativeDateAdapter(),
+    provideAnimationsAsync(),
+
   ],
   bootstrap: [AppComponent],
 })
