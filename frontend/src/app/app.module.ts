@@ -12,6 +12,11 @@ import { RatingsComponent } from './shared/ratings/ratings.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -25,12 +30,28 @@ import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      preventDuplicates: true,
+      positionClass: 'toast-top-center',
+      closeButton: true,
+      progressBar: true,
+      newestOnTop: true,
+      tapToDismiss: true,
+      progressAnimation: 'decreasing',
+    }),
   ],
-  providers: [provideAnimationsAsync()],
+  providers: [
+    provideAnimationsAsync(),
+    UserService,
+    provideNativeDateAdapter(),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
