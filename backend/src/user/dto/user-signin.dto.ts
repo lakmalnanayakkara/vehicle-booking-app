@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class UserSignInDTO {
+export class UserSignInDTO implements UserSignInDTO {
   @IsString()
   @IsNotEmpty()
   username: string;

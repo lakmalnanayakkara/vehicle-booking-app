@@ -15,7 +15,6 @@ export class AppComponent {
   isError = false;
   variant = 'success';
   message = 'Not Found';
-  isUserSignIn = false;
 
   constructor(private titleService: Title, private router: Router) {
     this.setDynamicTitle();
@@ -42,6 +41,5 @@ export class AppComponent {
 
   sideNavOpen() {
     this.isSideNavOpen = !this.isSideNavOpen;
-    console.log(this.isSideNavOpen);
   }
 }

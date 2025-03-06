@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { UserSignUpDTO } from './dto/user-signup.dto';
 import { UserSignInDTO } from './dto/user-signin.dto';
 import { Roles } from 'src/auth/decorators/roles.decorator';
-import type { StandardResponse } from './dto/standard-response.dto';
+import type { StandardResponse } from '../shared/dto/standard-response.dto';
 import { RolesAuthGuard } from 'src/auth/guards/roles.guard';
 import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
 import { UserRoles } from 'src/enums/roles.enum';
