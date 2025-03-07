@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 })
 export class CarCardsComponent {
   @Input() carData: any;
+
+
+  viewDetails(){
+    
+  }
 }

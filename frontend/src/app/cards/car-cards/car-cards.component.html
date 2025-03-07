@@ -1,6 +1,6 @@
 <section class="car-list-card">
     <div class="car-list-card-image" style="height: 160px;">
-        <img [src]="carData?.imageUrl">
+        <img src="../../../assets/ca1.jpg" alt="Car Image" class="img-fluid">
     </div>
     <div class="car-list-card-description">
         <div class="car-list-card-description-reviews">
@@ -13,11 +13,11 @@
             </div>
         </div>
         <div class="car-list-card-description-title">
-          {{carData?.brand}}   {{carData?.name}} 
+          <!-- {{carData?.brand}}   {{carData?.name}}  -->dgsdg
         </div>
         <div class="car-list-card-description-properties">
             <div class="car-list-card-description-properties-property" *ngFor="let details of carData?.carAccessoriess">
-                {{details.accessoriesTitle}}
+                <!-- {{details.accessoriesTitle}} -->oermvmrgmeb
                 <div class="property-point"></div>
             </div>
             
@@ -26,21 +26,25 @@
     <div class="car-list-card-price-distance">
         <div class="car-list-card-price">
             <div class="car-list-card-price-availability-text">
-               {{carData?.registeredOn | date:'dd-MMM-yyyy'}}
+               <!-- {{carData?.registeredOn | date:'dd-MMM-yyyy'}} -->45/43/33
             </div> 
         </div>
         <div class="car-list-card-distance">
              <i class="fa fa-location"></i>
             <div class="car-list-card-distance-place">
-                {{carData?.locationTitle}}
+                <!-- {{carData?.locationTitle}} --> Kalutara
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 text-center">
             <div class="car-list-card-price-title">
-                ₹ {{carData?.pricingDescription}}
+                <!-- ₹ {{carData?.pricingDescription}} -->500$
             </div> 
         </div>
     </div>
+
+     <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="viewDetails()">View Details</button>
+    </mat-card-actions>
 </section>

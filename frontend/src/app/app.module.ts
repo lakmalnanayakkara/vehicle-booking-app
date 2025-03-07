@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatTimepickerModule} from '@angular/material/timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Add this for animations
 import { HttpClientModule } from '@angular/common/http';
+import { FilterSearchComponent } from './filter-search/filter-search.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     CarCardsComponent,
     BookingComponent,
     HomeComponent,
+    FilterSearchComponent,
   ],
   imports: [
     BrowserModule,
