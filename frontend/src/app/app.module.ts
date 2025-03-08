@@ -23,6 +23,12 @@ import {MatTimepickerModule} from '@angular/material/timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Add this for animations
 import { HttpClientModule } from '@angular/common/http';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
+import { AddNewVehicleComponent } from './add-new-vehicle/add-new-vehicle.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,6 +43,7 @@ import { FilterSearchComponent } from './filter-search/filter-search.component';
     BookingComponent,
     HomeComponent,
     FilterSearchComponent,
+    AddNewVehicleComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +55,11 @@ import { FilterSearchComponent } from './filter-search/filter-search.component';
     HttpClientModule,
     MatNativeDateModule,
     MatTimepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    AsyncPipe,
+    MatStepperModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       preventDuplicates: true,

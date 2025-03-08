@@ -1,0 +1,142 @@
+@switch (stepperOrientation | async) {
+    @case ('horizontal') {
+      <div>Make your screen smaller to see a vertical stepper</div>
+    }
+    @case ('vertical') {
+      <div>Make your screen larger to see a horizontal stepper</div>
+    }
+  }
+  <div class="container-fluid"  >
+    <mat-stepper
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup" label="Fill out your name">
+       <div class="pt-2 col-12"> 
+
+      <form [formGroup]="firstFormGroup">
+        <div class="d-flex align-items-center w-100">
+            <div class="col-3">
+                        <p class="mb-0 me-4 ">Name    :</p>
+                    </div>
+              <div class="col-4">      
+        <mat-form-field class="w-75">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
+        </mat-form-field>
+       </div>
+    </div>
+    
+    <form [formGroup]="firstFormGroup">
+        <div class="d-flex align-items-center w-100">
+            <div class="col-3">
+                        <p class="mb-0 me-4 ">Date of Birth   :</p>
+                    </div>
+              <div class="col-4">      
+        <mat-form-field class="w-75">
+            <mat-label>MM/DD/YYYY</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+       </div>
+    </div>
+    
+    <form [formGroup]="firstFormGroup">
+        <div class="d-flex align-items-center w-100">
+            <div class="col-3">
+                        <p class="mb-0 me-4 ">Address   :</p>
+                    </div>
+              <div class="col-4">      
+        <mat-form-field class="w-75">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
+        </mat-form-field>
+       </div>
+    </div>
+    
+    <form [formGroup]="firstFormGroup">
+        <div class="d-flex align-items-center w-100">
+            <div class="col-3">
+                        <p class="mb-0 me-4 ">ID Number    :</p>
+                    </div>
+              <div class="col-4">      
+        <mat-form-field class="w-75">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
+        </mat-form-field>
+       </div>
+    </div>
+    
+    <form [formGroup]="firstFormGroup">
+        <div class="d-flex align-items-center w-100">
+            <div class="col-3">
+                        <p class="mb-0 me-4 ">Phone Number    :</p>
+                    </div>
+              <div class="col-4">      
+        <mat-form-field class="w-75">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
+        </mat-form-field>
+       </div>
+    </div>
+    
+    <form [formGroup]="firstFormGroup">
+        <div class="d-flex align-items-center w-100">
+            <div class="col-3">
+                        <p class="mb-0 me-4 ">Email    :</p>
+                    </div>
+              <div class="col-4">      
+        <mat-form-field class="w-75">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
+        </mat-form-field>
+       </div>
+    </div>
+    
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+      </form>
+      </form>
+      </form>
+      </form>
+      </form>
+
+      
+    </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Fill out your phone number">
+      <form [formGroup]="thirdFormGroup">
+        <mat-form-field>
+          <mat-label>Phone number</mat-label>
+          <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

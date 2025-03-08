@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-cards',
@@ -9,8 +10,10 @@ import { Component, Input } from '@angular/core';
 export class CarCardsComponent {
   @Input() carData: any;
 
+  constructor(private router: Router) {}
 
-  viewDetails(){
-    
+  viewDetails() {
+    this.router.navigate(['/details']);  // Navigates to the details page
   }
+
 }

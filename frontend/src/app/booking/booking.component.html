@@ -1,12 +1,13 @@
 <div class="container-fluid"  >
     <div class="row">
         <div class="col-8">
-            <div class="row">
+            <div class="row p-2">
                 <div class="col-8">
                     <div class="card" style="border: none;">
-                        <div class="card-body p-0"> <img style="border-radius: 10px;"
-                                [src]="carDetails?.imageUrl">
-                        
+                        <div class="card-body p-0"> 
+                            <!-- <img style="border-radius: 10px;"
+                                [src]="carDetails?.imageUrl"> -->
+                                <img src="../../../assets/ca1.jpg" style="border-radius: 10px;" alt="Car Image" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -18,13 +19,19 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
-                            <p>   {{carDetails?.brand}}  {{carDetails?.name}}<small *ngFor="let item of carDetails?.zoomCarAccessoriess"> {{item.accessoriesTitle}}</small></p> 
+                            <!-- <p>   {{carDetails?.brand}}  {{carDetails?.name}}<small *ngFor="let item of carDetails?.zoomCarAccessoriess"> {{item.accessoriesTitle}}</small></p>  -->
+                                                          <p>  Toyota Axio </p>  
+                                                          <p>  Brand New Car </p>
+                                                          <p>  Air Condition </p>
+                                                          <p>  4 Seat </p>
+                                                          <p>  Manufacture Year 2014 </p>
+
                         </div>
                     </div>
                    
                 </div>
             </div>
-            <div class="row pt-2">
+            <!-- <div class="row pt-2">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
@@ -49,12 +56,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row pt-2">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4>About the car</h4>
+                            <h4>Special Information</h4>
                             <p>Easy to ride and comfortable for 4 peoples for long drives good music and noise free car</p>
                             <div class="row">
                                 <div class="col-3 pt-2">
@@ -82,7 +89,7 @@
             
         </div>
         <div class="col-4">
-            <div class="row">
+            <div class="row p-2">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
