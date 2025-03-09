@@ -12,6 +12,9 @@ import {map} from 'rxjs/operators';
   styleUrl: './add-new-vehicle.component.css'
 })
 export class AddNewVehicleComponent {
+
+  floatLabelControl: any;
+
   private _formBuilder = inject(FormBuilder);
 
   firstFormGroup = this._formBuilder.group({

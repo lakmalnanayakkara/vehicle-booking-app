@@ -1,133 +1,317 @@
-@switch (stepperOrientation | async) {
-    @case ('horizontal') {
-      <div>Make your screen smaller to see a vertical stepper</div>
-    }
-    @case ('vertical') {
-      <div>Make your screen larger to see a horizontal stepper</div>
-    }
-  }
-  <div class="container-fluid"  >
-    <mat-stepper
+@switch (stepperOrientation | async) { @case ('horizontal') {
+<div>Make your screen smaller to see a vertical stepper</div>
+} @case ('vertical') {
+<div>Make your screen larger to see a horizontal stepper</div>
+} }
+<div class="container-fluid">
+  <mat-stepper
     class="example-stepper"
-    [orientation]="(stepperOrientation | async)!">
+    [orientation]="(stepperOrientation | async)!"
+  >
     <mat-step [stepControl]="firstFormGroup" label="Fill out your name">
-       <div class="pt-2 col-12"> 
+      <div class="pt-2 col-12">
+        <form [formGroup]="firstFormGroup">
+          <div class="d-flex align-items-center w-100">
+            <div class="col-3">
+              <p class="mb-0 me-4">Name :</p>
+            </div>
+            <div class="col-4">
+              <mat-form-field class="w-75">
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Full Name"
+                  formControlName="firstCtrl"
+                  required
+                />
+              </mat-form-field>
+            </div>
+          </div>
 
-      <form [formGroup]="firstFormGroup">
-        <div class="d-flex align-items-center w-100">
-            <div class="col-3">
-                        <p class="mb-0 me-4 ">Name    :</p>
-                    </div>
-              <div class="col-4">      
-        <mat-form-field class="w-75">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
-        </mat-form-field>
-       </div>
-    </div>
-    
-    <form [formGroup]="firstFormGroup">
-        <div class="d-flex align-items-center w-100">
-            <div class="col-3">
-                        <p class="mb-0 me-4 ">Date of Birth   :</p>
-                    </div>
-              <div class="col-4">      
-        <mat-form-field class="w-75">
-            <mat-label>MM/DD/YYYY</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-       </div>
-    </div>
-    
-    <form [formGroup]="firstFormGroup">
-        <div class="d-flex align-items-center w-100">
-            <div class="col-3">
-                        <p class="mb-0 me-4 ">Address   :</p>
-                    </div>
-              <div class="col-4">      
-        <mat-form-field class="w-75">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
-        </mat-form-field>
-       </div>
-    </div>
-    
-    <form [formGroup]="firstFormGroup">
-        <div class="d-flex align-items-center w-100">
-            <div class="col-3">
-                        <p class="mb-0 me-4 ">ID Number    :</p>
-                    </div>
-              <div class="col-4">      
-        <mat-form-field class="w-75">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
-        </mat-form-field>
-       </div>
-    </div>
-    
-    <form [formGroup]="firstFormGroup">
-        <div class="d-flex align-items-center w-100">
-            <div class="col-3">
-                        <p class="mb-0 me-4 ">Phone Number    :</p>
-                    </div>
-              <div class="col-4">      
-        <mat-form-field class="w-75">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
-        </mat-form-field>
-       </div>
-    </div>
-    
-    <form [formGroup]="firstFormGroup">
-        <div class="d-flex align-items-center w-100">
-            <div class="col-3">
-                        <p class="mb-0 me-4 ">Email    :</p>
-                    </div>
-              <div class="col-4">      
-        <mat-form-field class="w-75">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
-        </mat-form-field>
-       </div>
-    </div>
-    
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-      </form>
-      </form>
-      </form>
-      </form>
-      </form>
+            <div class="d-flex align-items-center w-100">
+              <div class="col-3">
+                <p class="mb-0 me-4">Date of Birth :</p>
+              </div>
+              <div class="col-4">
+                <mat-form-field class="w-75">
+                  <mat-label>MM/DD/YYYY</mat-label>
+                  <input matInput [matDatepicker]="picker" />
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
 
-      
-    </div>
+              <div class="d-flex align-items-center w-100">
+                <div class="col-3">
+                  <p class="mb-0 me-4">Address :</p>
+                </div>
+                <div class="col-4">
+                  <mat-form-field class="w-75">
+                    <mat-label>Name</mat-label>
+                    <input
+                      matInput
+                      placeholder="Full Name"
+                      formControlName="firstCtrl"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+                <div class="d-flex align-items-center w-100">
+                  <div class="col-3">
+                    <p class="mb-0 me-4">ID Number :</p>
+                  </div>
+                  <div class="col-4">
+                    <mat-form-field class="w-75">
+                      <mat-label>Name</mat-label>
+                      <input
+                        matInput
+                        placeholder="Full Name"
+                        formControlName="firstCtrl"
+                        required
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                  <div class="d-flex align-items-center w-100">
+                    <div class="col-3">
+                      <p class="mb-0 me-4">Phone Number :</p>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field class="w-75">
+                        <mat-label>Name</mat-label>
+                        <input
+                          matInput
+                          placeholder="Full Name"
+                          formControlName="firstCtrl"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+          
+                    <div class="d-flex align-items-center w-100">
+                      <div class="col-3">
+                        <p class="mb-0 me-4">Email :</p>
+                      </div>
+                      <div class="col-4">
+                        <mat-form-field class="w-75">
+                          <mat-label>Name</mat-label>
+                          <input
+                            matInput
+                            placeholder="Full Name"
+                            formControlName="firstCtrl"
+                            required
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div>
+                        <button mat-button matStepperNext class="custom-blue">Next</button>
+                      </div>
+                    </div>
+                  </form>
+              
+        
+      </div>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
       <form [formGroup]="secondFormGroup">
-        <mat-form-field>
+        <div class="pt-5 col-12">
+          <div class="d-flex">
+            <div class="col-3 justify-content-center">
+              <p class="mb-0 me-4">Driving license photo [front] :</p>
+              <p class="mb-0 me-4" style="color: brown;" >Rename : DLF vehicle number (DLF KW-3322)</p>
+
+            </div>
+
+            <!-- <mat-form-field class="col-4">
           <mat-label>Address</mat-label>
           <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                  required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+
+        </mat-form-field> -->
+            <div class="img-upload col-9">
+              <app-image-upload></app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 col-12">
+          <div class="d-flex">
+            <div class="col-3 justify-content-center">
+              <p class="mb-0 me-4">Driving license photo [Back] :</p>
+              <p class="mb-0 me-4" style="color: brown;" >Rename : DLB vehicle number (DLB KW-3322)</p>
+
+            </div>
+
+            <div class="img-upload col-9">
+              <app-image-upload></app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5 col-12">
+          <div class="d-flex">
+            <div class="col-3 justify-content-center">
+              <p class="mb-0 me-4">Vehicle renuving license photo :</p>
+              <p class="mb-0 me-4" style="color: brown;" >Rename : RL vehicle number (RL KW-3322)</p>
+
+            </div>
+
+            <div class="img-upload col-9">
+              <app-image-upload></app-image-upload>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-5 col-12">
+          <div class="d-flex">
+            <div class="col-3 justify-content-center">
+              <p class="mb-0 me-4">Vehicle insurance photo :</p>
+              <p class="mb-0 me-4" style="color: brown;" >Rename : LI vehicle number (LI KW-3322)</p>
+
+            </div>
+
+            <div class="img-upload col-9">
+              <app-image-upload></app-image-upload>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-5 col-12">
+          <div class="d-flex">
+            <div class="col-3 justify-content-center">
+              <p class="mb-0 me-4">Vehicle book copy :</p>
+              <p class="mb-0 me-4" style="color: brown;" >Rename : RBC vehicle number (RBC KW-3322)</p>
+
+            </div>
+
+            <div class="img-upload col-9">
+              <app-image-upload></app-image-upload>
+            </div>
+          </div>
+          <div>
+            <div>
+              <button mat-button matStepperPrevious class="custom-blue me-2 ">Back</button>
+              <button mat-button matStepperNext class="custom-blue">Next</button>
+            </div>
+          </div>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup" label="Fill out your phone number">
       <form [formGroup]="thirdFormGroup">
-        <mat-form-field>
-          <mat-label>Phone number</mat-label>
-          <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
-        </mat-form-field>
+       
+        <div class="pt-5 col-12">
+          <div class="d-flex">
+            <div class="col-3 justify-content-center">
+              <p class="mb-0 me-4">Vehicle Photoes :</p>
+            </div>
+
+            <div class="img-upload col-9">
+              <app-image-upload></app-image-upload>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center w-100 pt-5">
+          <div class="col-3">
+            <p class="mb-0 me-4">Vehicle manufacturer year :</p>
+          </div>
+          <div class="col-4">
+            <mat-form-field class="w-75">
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                placeholder="Full Name"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="d-flex align-items-center w-100 pt-5">
+          <div class="col-3">
+            <p class="mb-0 me-4">Vehicle Brand :</p>
+          </div>
+          <div class="col-4">
+            <mat-form-field class="w-75">
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                placeholder="Full Name"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row ">
+          <div class="col-12 mx-auto">
+              
+                  <label class="col-3">Gear System : </label>
+                  <mat-radio-group [formControl]="floatLabelControl">
+                    <mat-radio-button value="auto">Automatic</mat-radio-button>
+                    <mat-radio-button value="always">Manual</mat-radio-button>
+                  </mat-radio-group>                          
+               </div>
+              </div>
+        
+        <div class="row ">
+          <div class="col-12 mx-auto">
+              
+                  <label class="col-3">Air Condition : </label>
+                  <mat-radio-group [formControl]="floatLabelControl">
+                    <mat-radio-button value="auto">Yes</mat-radio-button>
+                    <mat-radio-button value="always">No</mat-radio-button>
+                  </mat-radio-group>                          
+               </div>
+              </div>
+
+              <div class="d-flex align-items-center w-100 pt-5">
+                <div class="col-3">
+                  <p class="mb-0 me-4">Seat Count :</p>
+                </div>
+                <div class="col-4">
+                  <mat-form-field class="w-75">
+                    <mat-label>Name</mat-label>
+                    <input
+                      matInput
+                      placeholder="Full Name"
+                      formControlName="firstCtrl"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center w-100 pt-5">
+                <div class="col-3">
+                  <p class="mb-0 me-4">Special Specifications :</p>
+                </div>
+                <div class="col-4">
+                  <mat-form-field class="example-full-width w-75">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+
+             
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious class="custom-blue me-2 ">Back</button>
+          <button mat-button matStepperNext class="custom-blue">Next</button>
         </div>
       </form>
     </mat-step>
@@ -135,7 +319,9 @@
       <ng-template matStepLabel>Done</ng-template>
       <p>You are now done.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
+        <div>
+          <button mat-button matStepperPrevious class="custom-blue">Back</button>
+        </div>
       </div>
     </mat-step>
   </mat-stepper>
