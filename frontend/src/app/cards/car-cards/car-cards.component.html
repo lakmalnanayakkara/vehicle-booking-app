@@ -1,10 +1,47 @@
 <section class="car-list-card">
-    <div class="car-list-card-image" style="height: 160px;">
-        <img [src]="carData?.imageUrl">
+   
+
+     
+
+<div class="car-list-card-middle-body col-12 ">
+<div class="row d-flex" >
+    <div class="car-list-card-image mt-3 col-3 " style="height: 160px; margin-left:10px ;">
+        <img src="../../../assets/ca1.jpg" alt="Car Image" class="img-fluid">
     </div>
-    <div class="car-list-card-description">
-        <div class="car-list-card-description-reviews">
-            <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+ 
+    <div class="car-list-card-description col-6">
+
+        <div class="car-list-card-title col-12 ">
+            <div class="row">
+                <div class="col-auto d-flex align-items-center">
+                    <h1 class="me-3">Axio</h1>
+                    <p class="m-0">Toyota</p>
+                </div>
+            </div>
+        </div>
+        
+
+            <div class="car-list-card-main-features col-12 pt-3 " >
+                <div class="row d-flex align-items-center">
+                    <div class="col-auto gear"><i class="fa fa-gear"></i> Manual</div>
+                    <div class="col-auto seat"><i class="fa-solid fa-users"></i> 4 Seats</div>
+                    <div class="col-auto seat"><i class="fa-solid fa-snowflake"></i> Air Condition</div>
+                    <div class="col-auto seat"><i class="fa-solid fa-location-dot"></i> Kalutara</div>
+
+
+
+                </div>
+                
+            </div>
+        <div class="car-list-card-description-reviews col-12 pt-3">
+            <div class="car-list-card-description-reviews-icon ">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+            </div>
             <div class="car-list-card-description-reviews-value">
                 4.98
             </div>
@@ -12,35 +49,48 @@
 
             </div>
         </div>
-        <div class="car-list-card-description-title">
-          {{carData?.brand}}   {{carData?.name}} 
-        </div>
-        <div class="car-list-card-description-properties">
+    </div>
+
+    <div class="col-1">
+        <div class="border-start" style="height: 100%;  border-color: #000;"></div>
+    </div>
+        <!-- <div class="car-list-card-description-properties">
             <div class="car-list-card-description-properties-property" *ngFor="let details of carData?.carAccessoriess">
-                {{details.accessoriesTitle}}
-                <div class="property-point"></div>
+                {{details.accessoriesTitle}}oermvmrgmeb -->
+                <!-- <div class="property-point"></div>
             </div>
             
-        </div>
-    </div>
-    <div class="car-list-card-price-distance">
+        </div> --> 
+    
+    <!-- <div class="car-list-card-price-distance">
         <div class="car-list-card-price">
             <div class="car-list-card-price-availability-text">
-               {{carData?.registeredOn | date:'dd-MMM-yyyy'}}
-            </div> 
+                {{carData?.registeredOn | date:'dd-MMM-yyyy'}}45/43/33 -->
+            <!-- </div> 
         </div>
         <div class="car-list-card-distance">
              <i class="fa fa-location"></i>
-            <div class="car-list-card-distance-place">
-                {{carData?.locationTitle}}
+            <div class="car-list-card-distance-place"> -->
+                <!-- {{carData?.locationTitle}} Kalutara -->
+            <!-- </div>
+        </div> -->
+    <!-- </div> -->
+    <div class="row col-2 ">
+        <div class="col-12 pt-3  ">
+            <div class="d-flex align-items-center ">
+                <div class="car-list-card-price-title" style="font-size: 24px; font-weight: bold; color: red;">
+                  <!-- ₹ {{carData?.pricingDescription}} -->500$
+                </div> 
+                <p class="mb-0 ms-2">per day</p>
+              </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 text-center">
-            <div class="car-list-card-price-title">
-                ₹ {{carData?.pricingDescription}}
-            </div> 
-        </div>
-    </div>
+
+            <mat-card-actions class="d-flex justify-content-center align-items-center">
+                <button mat-raised-button style="background-color: rgb(4, 4, 170); color: white; padding: 10px;" (click)="viewDetails()">View Details</button>
+              </mat-card-actions>
+              
+                  
+</div>
+</div>
+</div>
 </section>

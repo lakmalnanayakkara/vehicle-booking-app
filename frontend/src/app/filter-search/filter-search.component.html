@@ -1,0 +1,242 @@
+<div class="container-fluid"  style="padding-top: 75px;">
+    <div class="car-list-filter-container">
+
+        <div class="row col-8 mx-auto">
+            <div class="col-4">
+                <label for="">Pick Up Point</label>
+                <select (change)="onLocationChange()" [(ngModel)]="fromLocation" name="fromLocation" class="form-control" id="start">
+                    <option value="">Pick Up Address</option>
+                    <option *ngFor="let location of locations" [value]="location.locationId"> {{location.title}}</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="">Destination</label>
+                <select [(ngModel)]="toLocation" name="toLocation" class="form-control" id="start">
+                    <option value="">Pick Up Address</option>
+                    <option *ngFor="let location of locations" [value]="location.locationId"> {{location.title}}</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="">Start Time - End Time</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="row pt-5">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header custom-dark-blue text-white">
+                       <div class="row ">
+                        <div class="col-6">Filter</div>
+                        <div class="col-6 text-end">Clear all filter</div>
+                       </div>
+                        
+                    </div>
+                    <div class="card-body">
+                        <h2 class="col-12">Car Category</h2>
+                        <div class="col-12">
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <mat-checkbox class="example-vehicle">Small Cars</mat-checkbox>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <p class="left-corner">23</p>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <mat-checkbox class="example-vehicle">Sedan Cars</mat-checkbox>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <p class="left-corner">23</p>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <mat-checkbox class="example-vehicle">SUV</mat-checkbox>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <p class="left-corner">23</p>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <mat-checkbox class="example-vehicle">Mini VAN`</mat-checkbox>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <p class="left-corner">23</p>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <mat-checkbox class="example-vehicle">VAN`</mat-checkbox>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <p class="left-corner">23</p>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <mat-checkbox class="example-vehicle">BUS`</mat-checkbox>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <p class="left-corner">23</p>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <mat-checkbox class="example-vehicle">Luxury Vehicles</mat-checkbox>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <p class="left-corner">23</p>
+                                </div>
+                            </div>
+                           </div> 
+                           <hr>
+                           <div class="car_specs pt-3">
+                            <h3 class="col-12">Vehicle Specification</h3>
+                            <div class="row">
+                                <div class="col-6">
+                            <mat-form-field>
+                                <mat-label>Select</mat-label>
+                                <mat-select>
+                                  <mat-option value="one">First option</mat-option>
+                                  <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+
+                            <div class="col-6">
+                                <mat-form-field>
+                                    <mat-label>Select</mat-label>
+                                    <mat-select>
+                                      <mat-option value="one">First option</mat-option>
+                                      <mat-option value="two">Second option</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                        </div>
+                           </div>  
+                           <hr> 
+                           <div class="row ">
+                            <div class="col-12 mx-auto">
+                                
+                                    <label>Air Condition : </label>
+                                    <mat-radio-group [formControl]="floatLabelControl">
+                                      <mat-radio-button value="auto">Yes</mat-radio-button>
+                                      <mat-radio-button value="always">No</mat-radio-button>
+                                    </mat-radio-group>                          
+                                 </div>
+                                </div>
+<hr>
+                                <div class="seat-count col-12">
+                                    <h3 class="col-12">Seat Count</h3>
+            
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <mat-checkbox class="example-vehicle">3 Seat</mat-checkbox>
+                                        </div>
+                                     </div>
+                                     <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <mat-checkbox class="example-vehicle">4 Seat</mat-checkbox>
+                                        </div>
+                                     </div>
+                                     <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <mat-checkbox class="example-vehicle">4+ Seat</mat-checkbox>
+                                        </div>
+                                    </div>
+                                     </div>
+                        
+                        </div>
+                       
+                            <!-- <div class="col-6">
+                                <input type="text"  class="form-control" placeholder="Search Model">
+                            </div> -->
+                       
+                        <!-- <h6 class=" pt-2">Sort By</h6>
+                        <div class="row">
+                            <div class="col-6">
+                                 <select class="form-control">
+                                    <option value="">By Car</option>
+                                    <option value="">By Price</option>
+                                 </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="text"  class="form-control" placeholder="Search Model">
+                            </div>
+                        </div>
+                        <h6 class="pt-2">Car Type</h6>
+                        <div class="row ">
+                            <div class="col-4 text-center">
+                                <div class="d-grid gap-2 ">
+                                    <button class="btn btn-outline-secondary"> EV</button>
+                                
+                                  </div>
+                                
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="d-grid gap-2 ">
+                                    <button class="btn btn-outline-secondary"> SEDAN</button>
+                                
+                                  </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                
+                                <div class="d-grid gap-2 ">
+                                    <button class="btn btn-outline-secondary"> SUV</button>
+                                
+                                  </div>
+                            </div>
+                        </div>
+                        <h6 class="pt-2">Seat Type</h6>
+                        <div class="row ">
+                            <div class="col-4 text-center">
+                                <div class="d-grid gap-2 ">
+                                    <button class="btn btn-outline-secondary"> 4 Seater</button>
+                                
+                                  </div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="d-grid gap-2 ">
+                                    <button class="btn btn-outline-secondary"> 5 Seater</button>
+                                
+                                  </div> 
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="d-grid gap-2 ">
+                                    <button class="btn btn-outline-secondary"> 7 Seater</button>
+                                
+                                  </div>  
+                            </div>
+                        </div> -->
+                       
+
+                    </div>
+                </div>
+           
+            <div class="col-8">
+              
+                <div class="car-list-home-container">
+                    <div class="row car-list-home">
+                        <!-- <div class="col-7" *ngFor="let car of availabelCars" (click)="makeBooking(car.carId)"> -->
+                                <!-- <app-car-card [carData]="car"></app-car-card> -->
+                                 <app-car-cards></app-car-cards>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+     
+
+
+    <!-- </div> -->
