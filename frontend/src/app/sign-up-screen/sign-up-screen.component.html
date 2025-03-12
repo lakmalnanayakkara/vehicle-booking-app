@@ -9,6 +9,90 @@
       class="flex-grow-1 w-100"
     >
       <mat-form-field class="w-100">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="" formControlName="name" required />
+        <mat-error
+          *ngIf="
+            signUpForm.controls.name.touched && signUpForm.controls.name.invalid
+          "
+        >
+          <span *ngIf="signUpForm.controls.name.errors.pattern"
+            >This is invalid name,Please Check</span
+          >
+          <span *ngIf="signUpForm.controls.name.hasError('required')"
+            >Name is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mt-2">
+        <mat-label>NIC Number</mat-label>
+        <input matInput placeholder="" formControlName="nicNumber" required />
+        <mat-error
+          *ngIf="
+            signUpForm.controls.nicNumber.touched &&
+            signUpForm.controls.nicNumber.invalid
+          "
+        >
+          <span *ngIf="signUpForm.controls.nicNumber.errors.pattern"
+            >This is invalid NIC,Please Check</span
+          >
+          <span *ngIf="signUpForm.controls.nicNumber.hasError('required')"
+            >NIC is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mt-2">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="" formControlName="email" required />
+        <mat-error
+          *ngIf="
+            signUpForm.controls.email.touched &&
+            signUpForm.controls.email.invalid
+          "
+        >
+          <span *ngIf="signUpForm.controls.email.errors.pattern"
+            >This is invalid email,Please Check</span
+          >
+          <span *ngIf="signUpForm.controls.email.hasError('required')"
+            >Email is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mt-2">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="" formControlName="address" required />
+        <mat-error
+          *ngIf="
+            signUpForm.controls.address.touched &&
+            signUpForm.controls.address.invalid
+          "
+        >
+          <span *ngIf="signUpForm.controls.address.errors.pattern"
+            >This is invalid address,Please Check</span
+          >
+          <span *ngIf="signUpForm.controls.address.hasError('required')"
+            >Address is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mt-2">
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="" formControlName="phone" required />
+        <mat-error
+          *ngIf="
+            signUpForm.controls.phone.touched &&
+            signUpForm.controls.phone.invalid
+          "
+        >
+          <span *ngIf="signUpForm.controls.phone.errors.pattern"
+            >This is invalid phone number,Please Check</span
+          >
+          <span *ngIf="signUpForm.controls.phone.hasError('required')"
+            >Phone Number is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mt-2">
         <mat-label>Username</mat-label>
         <input matInput placeholder="" formControlName="username" required />
         <mat-error

@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <form [formGroup]="basicDetailsForm" class="basic-filter-form">
+      <div class="d-flex flex-column col-md-3 col-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Start Location</mat-label>
+          <mat-select formControlName="startLocation" required>
+            <mat-option *ngFor="let location of locations" [value]="location">{{
+              location
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Drop Off Location</mat-label>
+          <mat-select formControlName="dropOffLocation" required>
+            <mat-option *ngFor="let location of locations" [value]="location">{{
+              location
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="d-flex flex-column col-md-3 col-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="startDatePicker"
+            formControlName="startDate"
+            required
+            placeholder="MM/DD/YYYY"
+            [min]="startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="startDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #startDatePicker
+            [startAt]="startDate"
+          ></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Start Time</mat-label>
+          <input
+            matInput
+            [matTimepicker]="startTimePicker"
+            formControlName="startTime"
+            required
+          />
+          <mat-timepicker-toggle matIconSuffix [for]="startTimePicker" />
+          <mat-timepicker #startTimePicker />
+        </mat-form-field>
+      </div>
+      <div class="d-flex flex-column col-md-3 col-12">
+        <mat-form-field appearance="outline">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="endDatePicker"
+            formControlName="endDate"
+            required
+            placeholder="MM/DD/YYYY"
+            [min]="startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="endDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker [startAt]="startDate"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>End Time</mat-label>
+          <input
+            matInput
+            [matTimepicker]="endTimePicker"
+            formControlName="endTime"
+            required
+          />
+          <mat-timepicker-toggle matIconSuffix [for]="endTimePicker" />
+          <mat-timepicker #endTimePicker />
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div></div>
+</div>

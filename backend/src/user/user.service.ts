@@ -19,7 +19,16 @@ export class UserService {
   ) {}
 
   public async userSignUp(userSignUpDTO: UserSignUpDTO): Promise<any> {
-    const { username, password, role } = userSignUpDTO;
+    const {
+      name,
+      address,
+      nicNumber,
+      phoneNumber,
+      email,
+      username,
+      password,
+      role,
+    } = userSignUpDTO;
     const existingUser = await this.userRepo.findOne({ where: { username } });
     if (existingUser) {
       throw new ConflictException('Username already exists', {
@@ -30,6 +39,11 @@ export class UserService {
       const salt = await bcrypt.genSalt();
       const hashPassword = await bcrypt.hash(password, salt);
       const user = this.userRepo.create({
+        name,
+        address,
+        nicNumber,
+        phoneNumber,
+        email,
         username,
         password: hashPassword,
         role,

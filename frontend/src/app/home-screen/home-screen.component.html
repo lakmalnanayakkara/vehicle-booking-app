@@ -1,1 +1,137 @@
-<p>home-screen works!</p>
+<div
+  class="container-fluid d-flex justify-content-center align-items-center home"
+>
+  <div
+    class="container d-flex justify-content-center align-items-center form-background"
+  >
+    <form
+      class="d-flex flex-column col-12 col-md-6 mt-3 mb-3"
+      [formGroup]="findCarsForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Start Location</mat-label>
+        <mat-select formControlName="startLocation" required>
+          <mat-option *ngFor="let location of locations" [value]="location">{{
+            location
+          }}</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="
+            findCarsForm.controls.startLocation.touched &&
+            findCarsForm.controls.startLocation.invalid
+          "
+        >
+          <span *ngIf="findCarsForm.controls.startLocation.hasError('required')"
+            >Start Location is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mt-2" appearance="outline">
+        <mat-label>Drop Off Location</mat-label>
+        <mat-select formControlName="dropOffLocation" required>
+          <mat-option *ngFor="let location of locations" [value]="location">{{
+            location
+          }}</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="
+            findCarsForm.controls.dropOffLocation.touched &&
+            findCarsForm.controls.dropOffLocation.invalid
+          "
+        >
+          <span
+            *ngIf="findCarsForm.controls.dropOffLocation.hasError('required')"
+            >Start Location is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox formControlName="returnSameLoc">
+        Return vehicle in Same location
+      </mat-checkbox>
+      <div class="mt-2 start-details">
+        <mat-form-field class="d-flex col-md-5" appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="startDatePicker"
+            formControlName="startDate"
+            required
+            placeholder="MM/DD/YYYY"
+            [min]="startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="startDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #startDatePicker
+            [startAt]="startDate"
+          ></mat-datepicker>
+          <mat-error
+            *ngIf="findCarsForm.controls.startDate.hasError('required')"
+            >Start Date is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="d-flex col-md-5" appearance="outline">
+          <mat-label>Start Time</mat-label>
+          <input
+            matInput
+            [matTimepicker]="startTimePicker"
+            formControlName="startTime"
+            required
+          />
+          <mat-timepicker-toggle matIconSuffix [for]="startTimePicker" />
+          <mat-timepicker #startTimePicker />
+          <mat-error
+            *ngIf="findCarsForm.controls.startTime.hasError('required')"
+            >Start Time is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="mt-2 end-details">
+        <mat-form-field class="d-flex col-md-5" appearance="outline">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="endDatePicker"
+            formControlName="endDate"
+            required
+            placeholder="MM/DD/YYYY"
+            [min]="startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="endDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker [startAt]="startDate"></mat-datepicker>
+          <mat-error *ngIf="findCarsForm.controls.endDate.hasError('required')"
+            >Date is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="d-flex col-md-5" appearance="outline">
+          <mat-label>End Time</mat-label>
+          <input
+            matInput
+            [matTimepicker]="endTimePicker"
+            formControlName="endTime"
+            required
+          />
+          <mat-timepicker-toggle matIconSuffix [for]="endTimePicker" />
+          <mat-timepicker #endTimePicker />
+          <mat-error *ngIf="findCarsForm.controls.endTime.hasError('required')"
+            >End Time is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <button
+        mat-stroked-button
+        type="submit"
+        class="mt-2"
+        [disabled]="findCarsForm.invalid"
+      >
+        FIND YOUR CAR
+      </button>
+    </form>
+  </div>
+</div>

@@ -6,7 +6,6 @@ export interface UserSignInDetails {
 }
 export interface UserSignUpDetails extends UserSignInDetails {
   name: string;
-  dateOfBirth: Date;
   address: string;
   nicNumber: string;
   phoneNumber: string;
