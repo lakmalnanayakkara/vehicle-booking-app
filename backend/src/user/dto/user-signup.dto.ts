@@ -1,5 +1,5 @@
-import { IsDate, IsNotEmpty, IsString } from 'class-validator';
-import type { UserRoles } from 'src/enums/roles.enum';
+import { IsDate, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { UserRoles } from 'src/enums/roles.enum';
 import { UserSignUpDetails } from 'src/interface/user.interface';
 
 export class UserSignUpDTO implements UserSignUpDetails {
@@ -39,7 +39,7 @@ export class UserSignUpDTO implements UserSignUpDetails {
   @IsNotEmpty()
   password: string;
 
-  @IsString()
+  @IsEnum(UserRoles)
   @IsNotEmpty()
   role: UserRoles;
 }

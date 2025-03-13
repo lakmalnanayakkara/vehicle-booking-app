@@ -14,12 +14,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
 import { UserService } from './services/user.service';
 import { ToastrModule } from 'ngx-toastr';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { CarCardsComponent } from './cards/car-cards/car-cards.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatTimepickerModule} from '@angular/material/timepicker';
+import { MatTimepickerModule } from '@angular/material/timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Add this for animations
 import { HttpClientModule } from '@angular/common/http';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
@@ -30,6 +35,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { MY_FORMATS } from './shared/date-format';
+import {
+  MatMomentDateModule,
+  MomentDateAdapter,
+} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -56,6 +66,7 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatNativeDateModule,
+    MatMomentDateModule,
     MatTimepickerModule,
     MatFormFieldModule,
     MatInputModule,
@@ -72,13 +83,17 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
       tapToDismiss: true,
       progressAnimation: 'decreasing',
     }),
-  
   ],
   providers: [
     UserService,
     provideNativeDateAdapter(),
     provideAnimationsAsync(),
-
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
   bootstrap: [AppComponent],
 })
