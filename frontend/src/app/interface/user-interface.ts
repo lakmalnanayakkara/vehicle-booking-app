@@ -1,4 +1,4 @@
-import { UserRoles } from './enums/roles.enum';
+import { UserRoles } from './enums/common.enum';
 
 export interface UserSignIn {
   username: string;

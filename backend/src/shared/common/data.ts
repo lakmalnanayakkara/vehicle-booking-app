@@ -4,7 +4,7 @@ import type { VehicleDetails } from 'src/interface/vehicle.interface';
 export const data: VehicleDetails[] = [
   {
     username: 'user1',
-    vehicle_manufacturer_year: new Date(),
+    vehicle_manufacturer_year: '2017',
     brand: 'brand1',
     transitionType: TransitionType.AUTO,
     isAirConditioning: false,
@@ -13,7 +13,7 @@ export const data: VehicleDetails[] = [
   },
   {
     username: 'user2',
-    vehicle_manufacturer_year: new Date(),
+    vehicle_manufacturer_year: '2015',
     brand: 'brand2',
     transitionType: TransitionType.AUTO,
     isAirConditioning: false,
@@ -22,7 +22,7 @@ export const data: VehicleDetails[] = [
   },
   {
     username: 'user3',
-    vehicle_manufacturer_year: new Date(),
+    vehicle_manufacturer_year: '2016',
     brand: 'brand3',
     transitionType: TransitionType.AUTO,
     isAirConditioning: false,

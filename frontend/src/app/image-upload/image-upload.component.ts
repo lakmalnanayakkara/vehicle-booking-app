@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FileUploadService } from '../services/file-upload.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,12 +10,14 @@ import { Observable } from 'rxjs';
   styleUrl: './image-upload.component.css',
 })
 export class ImageUploadComponent implements OnInit {
-  selectedFiles?: FileList;
-  selectedFileNames: string[] = [];
-  progressInfos: any[] = [];
-  message: string[] = [];
+  selectedFile?: File;
+  selectedFileName: string;
+  progressInfos: any;
+  message: string;
   imageInfos?: Observable<any>;
-  previews: string[] = [];
+  preview: string;
+
+  @Output() imageSelected = new EventEmitter<File>();
 
   constructor(private uploadService: FileUploadService) {}
 
@@ -23,24 +25,37 @@ export class ImageUploadComponent implements OnInit {
     this.imageInfos = this.uploadService.getFiles();
   }
 
+  // selectFiles(event: any): void {
+  //   console.log(this.selectedFiles && this.selectedFiles[0]);
+
+  //   if (this.selectedFiles && this.selectedFiles[0]) {
+  //     const numberOfFiles = this.selectedFiles.length;
+  //     for (let i = 0; i < numberOfFiles; i++) {
+  //       const reader = new FileReader();
+
+  //       reader.onload = (e: any) => {
+  //         this.previews.push(e.target.result);
+  //       };
+
+  //       reader.readAsDataURL(this.selectedFiles[i]);
+
+  //       this.selectedFileNames.push(this.selectedFiles[i].name);
+  //     }
+  //   }
+  //   console.log(this.selectedFiles);
+  // }
+
   selectFiles(event: any): void {
-    console.log(this.selectedFiles && this.selectedFiles[0]);
+    if (event.target.files && event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+      this.imageSelected.emit(this.selectedFile); // Emit the file to the parent component
 
-    if (this.selectedFiles && this.selectedFiles[0]) {
-      const numberOfFiles = this.selectedFiles.length;
-      for (let i = 0; i < numberOfFiles; i++) {
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          this.previews.push(e.target.result);
-        };
-
-        reader.readAsDataURL(this.selectedFiles[i]);
-
-        this.selectedFileNames.push(this.selectedFiles[i].name);
-      }
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.preview = e.target.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
-    console.log(this.selectedFiles);
   }
 
   upload(idx: number, file: File): void {
@@ -55,26 +70,18 @@ export class ImageUploadComponent implements OnInit {
             );
           } else if (event instanceof HttpResponse) {
             const msg = 'Uploaded the file successfully: ' + file.name;
-            this.message.push(msg);
+            this.message = msg;
             this.imageInfos = this.uploadService.getFiles();
           }
         },
         (err: any) => {
           this.progressInfos[idx].value = 0;
           const msg = 'Could not upload the file: ' + file.name;
-          this.message.push(msg);
+          this.message = msg;
         }
       );
     }
   }
 
-  uploadFiles(): void {
-    this.message = [];
-
-    if (this.selectedFiles) {
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        this.upload(i, this.selectedFiles[i]);
-      }
-    }
-  }
+  uploadFiles() {}
 }

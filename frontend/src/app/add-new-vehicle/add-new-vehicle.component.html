@@ -35,9 +35,37 @@
               panelClass="year-picker"
             ></mat-datepicker>
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field class="w-100 mt-2">
             <mat-label>Transmission Type</mat-label>
-            <input matInput formControlName="transMissionType" required />
+            <input
+              type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              formControlName="transMissionType"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let type of types" [value]="type.value">{{
+                type.viewValue
+              }}</mat-option>
+            </mat-autocomplete>
+            <mat-error
+              *ngIf="
+                vehicleDetailsForm.controls.transMissionType.hasError(
+                  'required'
+                )
+              "
+              >Transmission Type is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                vehicleDetailsForm.controls.transMissionType.hasError(
+                  'password'
+                )
+              "
+              >This is invalid type, Please Check</mat-error
+            >
           </mat-form-field>
           <mat-form-field>
             <mat-label>Seat Count</mat-label>
@@ -77,7 +105,9 @@
               <p class="mb-0 me-4">Vehicle Photo :</p>
             </div>
             <div class="img-upload col-md-9 col-12">
-              <app-image-upload></app-image-upload>
+              <app-image-upload
+                (imageSelected)="handleDocumentUpload($event)"
+              ></app-image-upload>
             </div>
           </div>
         </div>
@@ -91,7 +121,9 @@
             </div>
 
             <div class="img-upload col-md-9 col-12">
-              <app-image-upload></app-image-upload>
+              <app-image-upload
+                (imageSelected)="handleDocumentUpload($event)"
+              ></app-image-upload>
             </div>
           </div>
         </div>
@@ -105,7 +137,9 @@
             </div>
 
             <div class="img-upload col-md-9 col-12">
-              <app-image-upload></app-image-upload>
+              <app-image-upload
+                (imageSelected)="handleDocumentUpload($event)"
+              ></app-image-upload>
             </div>
           </div>
         </div>
@@ -119,7 +153,9 @@
             </div>
 
             <div class="img-upload col-md-9 col-12">
-              <app-image-upload></app-image-upload>
+              <app-image-upload
+                (imageSelected)="handleDocumentUpload($event)"
+              ></app-image-upload>
             </div>
           </div>
         </div>
@@ -134,7 +170,9 @@
             </div>
 
             <div class="img-upload col-md-9 col-12">
-              <app-image-upload></app-image-upload>
+              <app-image-upload
+                (imageSelected)="handleDocumentUpload($event)"
+              ></app-image-upload>
             </div>
           </div>
         </div>
@@ -149,7 +187,9 @@
             </div>
 
             <div class="img-upload col-md-9 col-12">
-              <app-image-upload></app-image-upload>
+              <app-image-upload
+                (imageSelected)="handleDocumentUpload($event)"
+              ></app-image-upload>
             </div>
           </div>
           <div>

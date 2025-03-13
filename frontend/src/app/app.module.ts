@@ -40,6 +40,7 @@ import {
   MatMomentDateModule,
   MomentDateAdapter,
 } from '@angular/material-moment-adapter';
+import { VehicleService } from './services/vehicle.service';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import {
   ],
   providers: [
     UserService,
+    VehicleService,
     provideNativeDateAdapter(),
     provideAnimationsAsync(),
     {
