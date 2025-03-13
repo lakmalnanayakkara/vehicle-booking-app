@@ -4,7 +4,6 @@ import type { VehicleDetails } from 'src/interface/vehicle.interface';
 export const data: VehicleDetails[] = [
   {
     username: 'user1',
-    vehicle_photo: '',
     vehicle_manufacturer_year: new Date(),
     brand: 'brand1',
     transitionType: TransitionType.AUTO,
@@ -14,7 +13,6 @@ export const data: VehicleDetails[] = [
   },
   {
     username: 'user2',
-    vehicle_photo: '',
     vehicle_manufacturer_year: new Date(),
     brand: 'brand2',
     transitionType: TransitionType.AUTO,
@@ -24,7 +22,6 @@ export const data: VehicleDetails[] = [
   },
   {
     username: 'user3',
-    vehicle_photo: '',
     vehicle_manufacturer_year: new Date(),
     brand: 'brand3',
     transitionType: TransitionType.AUTO,

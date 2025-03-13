@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   selector: 'app-image-upload',
   standalone: false,
   templateUrl: './image-upload.component.html',
-  styleUrl: './image-upload.component.css'
+  styleUrl: './image-upload.component.css',
 })
 export class ImageUploadComponent implements OnInit {
   selectedFiles?: FileList;
@@ -24,19 +24,14 @@ export class ImageUploadComponent implements OnInit {
   }
 
   selectFiles(event: any): void {
-    this.message = [];
-    this.progressInfos = [];
-    this.selectedFileNames = [];
-    this.selectedFiles = event.target.files;
+    console.log(this.selectedFiles && this.selectedFiles[0]);
 
-    this.previews = [];
     if (this.selectedFiles && this.selectedFiles[0]) {
       const numberOfFiles = this.selectedFiles.length;
       for (let i = 0; i < numberOfFiles; i++) {
         const reader = new FileReader();
 
         reader.onload = (e: any) => {
-          console.log(e.target.result);
           this.previews.push(e.target.result);
         };
 
@@ -45,6 +40,7 @@ export class ImageUploadComponent implements OnInit {
         this.selectedFileNames.push(this.selectedFiles[i].name);
       }
     }
+    console.log(this.selectedFiles);
   }
 
   upload(idx: number, file: File): void {
