@@ -3,11 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { SignInScreenComponent } from './sign-in-screen/sign-in-screen.component';
 import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
-import { HomeComponent } from './home/home.component';
-import { FilterSearchComponent } from './filter-search/filter-search.component';
-import { CarCardsComponent } from './cards/car-cards/car-cards.component';
 import { BookingComponent } from './booking/booking.component';
 import { AddNewVehicleComponent } from './add-new-vehicle/add-new-vehicle.component';
+import { CarListScreenComponent } from './car-list-screen/car-list-screen.component';
+import { FilterSearchComponent } from './filter-search/filter-search.component';
 
 const routes: Routes = [
   {
@@ -24,24 +23,23 @@ const routes: Routes = [
     path: 'sign-up',
     component: SignUpScreenComponent,
     data: { title: 'Join With Us | Sign Up' },
-  }, 
-  {
-    path:'search',
-    component:FilterSearchComponent,
-  }, 
-  {
-    path:'booking/:carId',
-    component:BookingComponent,
   },
   {
-    path:'add-new-vehicle',
-    component:AddNewVehicleComponent,
+    path: 'car-list',
+    component: CarListScreenComponent,
   },
   {
-    path:'home',
-    component: HomeComponent,
-    data: { title: 'home Component' },
-  }
+    path: 'booking/:carId',
+    component: BookingComponent,
+  },
+  {
+    path: 'add-new-vehicle',
+    component: AddNewVehicleComponent,
+  },
+  {
+    path: 'search',
+    component: FilterSearchComponent,
+  },
 ];
 
 @NgModule({

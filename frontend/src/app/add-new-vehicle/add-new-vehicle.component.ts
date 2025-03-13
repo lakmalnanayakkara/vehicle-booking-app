@@ -6,12 +6,27 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import moment from 'moment';
 import { Moment } from 'moment';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS,
+} from '@angular/material/core';
+import { MY_FORMATS } from '../shared/date-format';
 
 @Component({
   selector: 'app-add-new-vehicle',
   standalone: false,
   templateUrl: './add-new-vehicle.component.html',
   styleUrl: './add-new-vehicle.component.css',
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class AddNewVehicleComponent {
   floatLabelControl: any;

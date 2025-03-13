@@ -23,6 +23,11 @@ export class SignUpScreenComponent {
 
   signUpForm = new FormGroup(
     {
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
+      nicNumber: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
@@ -42,6 +47,11 @@ export class SignUpScreenComponent {
   onSubmit() {
     this.isLoading = true;
     const data: UserSignUp = {
+      name: this.signUpForm.controls.name.value,
+      address: this.signUpForm.controls.address.value,
+      nicNumber: this.signUpForm.controls.nicNumber.value,
+      phoneNumber: this.signUpForm.controls.phone.value,
+      email: this.signUpForm.controls.name.value,
       username: this.signUpForm.controls.username.value,
       password: this.signUpForm.controls.password.value,
       role: this.signUpForm.controls.role.value,
