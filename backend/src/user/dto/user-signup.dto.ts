@@ -1,4 +1,4 @@
-import { IsDate, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsEnum, IsNotEmpty, IsString } from 'class-validator';
 import { UserRoles } from 'src/enums/roles.enum';
 import { UserSignUpDetails } from 'src/interface/user.interface';
 
@@ -23,8 +23,8 @@ export class UserSignUpDTO implements UserSignUpDetails {
   @IsNotEmpty()
   email: string;
 
-  @IsBoolean()
   @IsNotEmpty()
+  @IsBoolean()
   isActive: boolean = true;
 
   @IsString()

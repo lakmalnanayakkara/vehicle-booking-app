@@ -39,6 +39,7 @@ import {
   MatMomentDateModule,
   MomentDateAdapter,
 } from '@angular/material-moment-adapter';
+import { CarListScreenComponent } from './car-list-screen/car-list-screen.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {
     FilterSearchComponent,
     AddNewVehicleComponent,
     ImageUploadComponent,
+    CarListScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,12 +88,6 @@ import {
     UserService,
     provideNativeDateAdapter(),
     provideAnimationsAsync(),
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE],
-    },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
   bootstrap: [AppComponent],
 })
