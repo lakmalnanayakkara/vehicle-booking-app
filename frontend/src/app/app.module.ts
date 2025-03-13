@@ -14,7 +14,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpScreenComponent } from './sign-up-screen/sign-up-screen.component';
 import { UserService } from './services/user.service';
 import { ToastrModule } from 'ngx-toastr';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { CarCardsComponent } from './cards/car-cards/car-cards.component';
 import { BookingComponent } from './booking/booking.component';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -29,7 +34,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
-import { CarListScreenComponent } from './car-list-screen/car-list-screen.component';
+import { MY_FORMATS } from './shared/date-format';
+import {
+  MatMomentDateModule,
+  MomentDateAdapter,
+} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -45,7 +54,6 @@ import { CarListScreenComponent } from './car-list-screen/car-list-screen.compon
     FilterSearchComponent,
     AddNewVehicleComponent,
     ImageUploadComponent,
-    CarListScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +64,7 @@ import { CarListScreenComponent } from './car-list-screen/car-list-screen.compon
     ReactiveFormsModule,
     HttpClientModule,
     MatNativeDateModule,
+    MatMomentDateModule,
     MatTimepickerModule,
     MatFormFieldModule,
     MatInputModule,
@@ -77,6 +86,12 @@ import { CarListScreenComponent } from './car-list-screen/car-list-screen.compon
     UserService,
     provideNativeDateAdapter(),
     provideAnimationsAsync(),
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
   bootstrap: [AppComponent],
 })

@@ -8,7 +8,7 @@ import { Public } from 'src/auth/decorators/public.decorator';
 export class VehicleController {
   constructor(private vehicleService: VehicleService) {}
 
-  @Get('/get-all-vehicles')
+  @Get('/save-vehicle')
   @Public(true)
   saveVehicles(): StandardResponse {
     const response: StandardResponse = {
