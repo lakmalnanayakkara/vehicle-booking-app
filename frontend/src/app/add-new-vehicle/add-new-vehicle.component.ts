@@ -6,12 +6,14 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import moment from 'moment';
 import { Moment } from 'moment';
+import { DocumentType, TransitionType } from '../interface/enums/common.enum';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import {
   DateAdapter,
   MAT_DATE_LOCALE,
   MAT_DATE_FORMATS,
 } from '@angular/material/core';
+import { VehicleService } from '../services/vehicle.service';
 import { MY_FORMATS } from '../shared/date-format';
 
 @Component({
@@ -31,11 +33,19 @@ import { MY_FORMATS } from '../shared/date-format';
 export class AddNewVehicleComponent {
   floatLabelControl: any;
 
+  vehicleDocsImages: { file: File; type: DocumentType }[] = [];
+  DocumentType = DocumentType;
+
+  types: { value: TransitionType; viewValue: string }[] = [
+    { value: TransitionType.AUTO, viewValue: 'AUTO' },
+    { value: TransitionType.MANUAL, viewValue: 'MANUAL' },
+  ];
+
   vehicleDetailsForm = new FormGroup({
     brandName: new FormControl('', [Validators.required]),
     manufactureYear: new FormControl(undefined, [Validators.required]),
-    transMissionType: new FormControl('', [Validators.required]),
-    seatCount: new FormControl('', [Validators.required]),
+    transMissionType: new FormControl(undefined, [Validators.required]),
+    seatCount: new FormControl(undefined, [Validators.required]),
     isAirConditioning: new FormControl(undefined, [Validators.required]),
     specification: new FormControl(''),
   });
@@ -44,7 +54,7 @@ export class AddNewVehicleComponent {
 
   stepperOrientation: Observable<StepperOrientation>;
 
-  constructor() {
+  constructor(private vehicleService: VehicleService) {
     const breakpointObserver = inject(BreakpointObserver);
 
     this.stepperOrientation = breakpointObserver
@@ -58,7 +68,76 @@ export class AddNewVehicleComponent {
     datepicker.close();
   }
 
+  handleDocumentUpload(file: File, type: DocumentType) {
+    this.vehicleDocsImages.push({ file, type });
+  }
+
+  handleDocumentRemove(file: File, type: DocumentType) {
+    this.vehicleDocsImages.forEach((doc, index) => {
+      if (doc.type === type) {
+        this.vehicleDocsImages.splice(index, 1);
+      }
+    });
+  }
+
   onSubmit() {
-    console.log('');
+    const formData = new FormData();
+
+    formData.append('username', 'user');
+    formData.append(
+      'vehicle_manufacturer_year',
+      this.vehicleDetailsForm.controls.manufactureYear.value
+    );
+    formData.append('brand', this.vehicleDetailsForm.controls.brandName.value);
+    formData.append(
+      'transitionType',
+      this.vehicleDetailsForm.controls.transMissionType.value
+    );
+    formData.append(
+      'isAirConditioning',
+      this.vehicleDetailsForm.controls.isAirConditioning.value
+    );
+    formData.append(
+      'seat_count',
+      this.vehicleDetailsForm.controls.seatCount.value.toString()
+    );
+    formData.append(
+      'specification',
+      this.vehicleDetailsForm.controls.specification.value
+    );
+
+    formData.append(
+      `${this.vehicleDocsImages[1].type}`,
+      this.vehicleDocsImages[1].file
+    );
+    formData.append(
+      `${this.vehicleDocsImages[2].type}`,
+      this.vehicleDocsImages[2].file
+    );
+    formData.append(
+      `${this.vehicleDocsImages[3].type}`,
+      this.vehicleDocsImages[3].file
+    );
+    formData.append(
+      `${this.vehicleDocsImages[4].type}`,
+      this.vehicleDocsImages[4].file
+    );
+    formData.append(
+      `${this.vehicleDocsImages[5].type}`,
+      this.vehicleDocsImages[5].file
+    );
+    formData.append(
+      `${this.vehicleDocsImages[0].type}`,
+      this.vehicleDocsImages[0].file
+    );
+
+    const sub = this.vehicleService.saveVehicle(formData).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

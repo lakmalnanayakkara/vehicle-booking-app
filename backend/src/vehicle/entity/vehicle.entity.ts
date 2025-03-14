@@ -10,8 +10,8 @@ export class Vehicle implements VehicleDetails {
   @Column({ name: 'username', type: 'varchar', nullable: false })
   username: string;
 
-  @Column({ name: 'manuf_year', type: 'date', nullable: false })
-  vehicle_manufacturer_year: Date;
+  @Column({ name: 'manuf_year', type: 'varchar', nullable: false })
+  vehicle_manufacturer_year: string;
 
   @Column({ name: 'brand', type: 'varchar', nullable: false })
   brand: string;
@@ -24,12 +24,19 @@ export class Vehicle implements VehicleDetails {
   })
   transitionType: TransitionType;
 
-  @Column({ name: 'AirConditioning', type: 'boolean', nullable: false })
+  @Column({
+    name: 'AirConditioning',
+    type: 'tinyint',
+    transformer: {
+      to: (value: boolean) => (value ? 1 : 0),
+      from: (value: number) => Boolean(value),
+    },
+  })
   isAirConditioning: boolean;
 
   @Column({ name: 'seats', type: 'int', nullable: false })
   seat_count: number;
 
-  @Column({ name: 'specs', type: 'varchar', nullable: false })
+  @Column({ name: 'specs', type: 'varchar', nullable: true })
   specification: string;
 }

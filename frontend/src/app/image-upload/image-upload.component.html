@@ -1,57 +1,42 @@
 <div class="col-12">
-  <div *ngFor="let progressInfo of progressInfos">
-    <span>{{ progressInfo.fileName }}</span>
-    <mat-toolbar class="progress-bar">
-      <mat-progress-bar
-        color="accent"
-        [value]="progressInfo.value"
-      ></mat-progress-bar>
-      <span class="progress">{{ progressInfo.value }}%</span>
-    </mat-toolbar>
-  </div>
-
   <mat-form-field class="col-12 bg-secondary text-white p-1 rounded">
     <div>
       <mat-toolbar>
         <input
           matInput
-          [value]="
-            selectedFileNames.length ? selectedFileNames : 'Select Images'
-          "
+          [value]="selectedFileName ? selectedFileName : 'Select Image'"
+          readonly
         />
 
         <button
-          mat-flat-button
-          color="primary"
-          [disabled]="!selectedFiles"
-          (click)="uploadFiles()"
+          mat-fab
+          aria-label="Example icon button with a delete icon"
+          *ngIf="selectedFile"
+          (click)="removeDocument()"
         >
-          Upload
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-toolbar>
 
       <input
+        #fileInput
         type="file"
         id="fileInput"
         name="fileInput"
         accept="image/*"
         (change)="selectFiles($event)"
+        [disabled]="selectedFile"
       />
     </div>
   </mat-form-field>
 
   <div class="col-12">
-    <img
-      *ngFor="let preview of previews"
-      [src]="preview"
-      class="preview"
-      style="max-width: 300px"
-    />
+    <img [src]="preview" class="preview" style="max-width: 300px" />
   </div>
 
-  <div *ngIf="message.length" class="message">
-    <ul *ngFor="let msg of message; let i = index">
-      <li>{{ msg }}...</li>
+  <div *ngIf="message" class="message">
+    <ul>
+      <li>{{ message }}</li>
     </ul>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
   IsString,
   IsNotEmpty,
@@ -16,7 +17,7 @@ export class VehicleDetailsDTO implements VehicleDetails {
 
   @IsDate()
   @IsNotEmpty()
-  vehicle_manufacturer_year: Date;
+  vehicle_manufacturer_year: string;
 
   @IsString()
   @IsNotEmpty()
@@ -26,15 +27,20 @@ export class VehicleDetailsDTO implements VehicleDetails {
   @IsNotEmpty()
   transitionType: TransitionType;
 
+  @Transform(({ value }) => {
+    if (value === 'true') return true;
+    if (value === 'false') return false;
+    return value;
+  })
   @IsBoolean()
   @IsNotEmpty()
   isAirConditioning: boolean;
 
+  @Transform(({ value }) => Number(value))
   @IsNumber()
   @IsNotEmpty()
   seat_count: number;
 
   @IsString()
-  @IsNotEmpty()
   specification: string;
 }

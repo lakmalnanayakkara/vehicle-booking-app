@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordMatchValidator } from '../shared/validators/password-mismatch.validator';
 import { UserService } from '../services/user.service';
 import { UserSignUp } from '../interface/user-interface';
-import { UserRoles } from '../interface/enums/roles.enum';
+import { UserRoles } from '../interface/enums/common.enum';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 @Component({
