@@ -7,7 +7,6 @@ import {
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service';
 import type { StandardResponse } from 'src/shared/dto/standard-response.dto';
-import { data } from 'src/shared/common/data';
 import { Public } from 'src/auth/decorators/public.decorator';
 import type { VehicleDetailsDTO } from './dto/vehicle-save.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
@@ -37,13 +36,10 @@ export class VehicleController {
       vehicleDetailsDTO,
       files,
     );
-    if (vehicle) {
-      console.log();
-    }
     const response: StandardResponse = {
       code: 200,
       message: 'SUCCESSFUL',
-      data: data,
+      data: vehicle,
     };
     return response;
   }

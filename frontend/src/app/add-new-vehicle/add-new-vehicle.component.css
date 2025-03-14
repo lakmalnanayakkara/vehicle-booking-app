@@ -1,4 +1,18 @@
-.custom-blue{
-    background-color: #036dd8; 
-    color: white !important;
+.custom-blue {
+  background-color: #036dd8;
+  color: white !important;
+}
+
+.radio-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (max-width: 321px) {
+  .radio-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
 }

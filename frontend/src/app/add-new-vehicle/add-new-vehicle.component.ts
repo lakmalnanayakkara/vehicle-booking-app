@@ -8,7 +8,7 @@ import moment from 'moment';
 import { Moment } from 'moment';
 import { VehicleService } from '../services/vehicle.service';
 import { VehicleSaveDetails } from '../interface/vehicle-interface';
-import { TransitionType } from '../interface/enums/common.enum';
+import { TransitionType, DocumentType } from '../interface/enums/common.enum';
 
 @Component({
   selector: 'app-add-new-vehicle',
@@ -19,7 +19,8 @@ import { TransitionType } from '../interface/enums/common.enum';
 export class AddNewVehicleComponent {
   floatLabelControl: any;
 
-  vehicleDocsImages: File[] = [];
+  vehicleDocsImages: { file: File; type: DocumentType }[] = [];
+  DocumentType = DocumentType;
 
   types: { value: TransitionType; viewValue: string }[] = [
     { value: TransitionType.AUTO, viewValue: 'AUTO' },
@@ -53,32 +54,19 @@ export class AddNewVehicleComponent {
     datepicker.close();
   }
 
-  handleDocumentUpload(file: File) {
-    this.vehicleDocsImages.push(file);
+  handleDocumentUpload(file: File, type: DocumentType) {
+    this.vehicleDocsImages.push({ file, type });
+  }
+
+  handleDocumentRemove(file: File, type: DocumentType) {
+    this.vehicleDocsImages.forEach((doc, index) => {
+      if (doc.type === type) {
+        this.vehicleDocsImages.splice(index, 1);
+      }
+    });
   }
 
   onSubmit() {
-    // const vehicleDetails: VehicleSaveDetails = {
-    //   username: 'user',
-    //   vehicle_manufacturer_year:
-    //     this.vehicleDetailsForm.controls.manufactureYear.value,
-    //   brand: this.vehicleDetailsForm.controls.brandName.value,
-    //   transitionType: this.vehicleDetailsForm.controls.transMissionType.value,
-    //   isAirConditioning:
-    //     this.vehicleDetailsForm.controls.isAirConditioning.value,
-    //   seat_count: this.vehicleDetailsForm.controls.seatCount.value,
-    //   specification: this.vehicleDetailsForm.controls.specification.value,
-    //   driving_license_photo_front: this.vehicleDocsImages[1],
-    //   driving_license_photo_back: this.vehicleDocsImages[2],
-    //   vehicle_renewing_license_photo: this.vehicleDocsImages[3],
-    //   Vehicle_insurance_photo: this.vehicleDocsImages[4],
-    //   vehicle_book_copy: this.vehicleDocsImages[5],
-    //   vehicle_photo: this.vehicleDocsImages[0],
-    // };
-    console.log(
-      typeof this.vehicleDetailsForm.controls.isAirConditioning.value
-    );
-
     const formData = new FormData();
 
     formData.append('username', 'user');
@@ -104,15 +92,30 @@ export class AddNewVehicleComponent {
       this.vehicleDetailsForm.controls.specification.value
     );
 
-    formData.append('driving_license_photo_front', this.vehicleDocsImages[1]);
-    formData.append('driving_license_photo_back', this.vehicleDocsImages[2]);
     formData.append(
-      'vehicle_renewing_license_photo',
-      this.vehicleDocsImages[3]
+      this.vehicleDocsImages[1].type,
+      this.vehicleDocsImages[1].file
     );
-    formData.append('vehicle_insurance_photo', this.vehicleDocsImages[4]);
-    formData.append('vehicle_book_copy', this.vehicleDocsImages[5]);
-    formData.append('vehicle_photo', this.vehicleDocsImages[0]);
+    formData.append(
+      this.vehicleDocsImages[2].type,
+      this.vehicleDocsImages[2].file
+    );
+    formData.append(
+      this.vehicleDocsImages[3].type,
+      this.vehicleDocsImages[3].file
+    );
+    formData.append(
+      this.vehicleDocsImages[4].type,
+      this.vehicleDocsImages[4].file
+    );
+    formData.append(
+      this.vehicleDocsImages[5].type,
+      this.vehicleDocsImages[5].file
+    );
+    formData.append(
+      this.vehicleDocsImages[0].type,
+      this.vehicleDocsImages[0].file
+    );
 
     const sub = this.vehicleService.saveVehicle(formData).subscribe(
       (data) => {
