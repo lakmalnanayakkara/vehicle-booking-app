@@ -13,9 +13,6 @@ export class User implements UserSignUpDetails, UserSignInDetails {
   @Column({ name: 'name', type: 'varchar', nullable: false })
   name: string;
 
-  @Column({ name: 'birth_date', type: 'date', nullable: false })
-  dateOfBirth: Date;
-
   @Column({ name: 'address', type: 'varchar', nullable: false })
   address: string;
 

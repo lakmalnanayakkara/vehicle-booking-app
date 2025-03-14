@@ -22,7 +22,6 @@ import {
 } from '@angular/material/core';
 import { CarCardsComponent } from './cards/car-cards/car-cards.component';
 import { BookingComponent } from './booking/booking.component';
-import { HomeComponent } from './home/home.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTimepickerModule } from '@angular/material/timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Add this for animations
@@ -41,6 +40,7 @@ import {
   MomentDateAdapter,
 } from '@angular/material-moment-adapter';
 import { VehicleService } from './services/vehicle.service';
+import { CarListScreenComponent } from './car-list-screen/car-list-screen.component';
 
 @NgModule({
   declarations: [
@@ -53,10 +53,10 @@ import { VehicleService } from './services/vehicle.service';
     SignUpScreenComponent,
     CarCardsComponent,
     BookingComponent,
-    HomeComponent,
     FilterSearchComponent,
     AddNewVehicleComponent,
     ImageUploadComponent,
+    CarListScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,12 +90,6 @@ import { VehicleService } from './services/vehicle.service';
     VehicleService,
     provideNativeDateAdapter(),
     provideAnimationsAsync(),
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE],
-    },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
   bootstrap: [AppComponent],
 })

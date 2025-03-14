@@ -1,0 +1,17 @@
+.basic-filter-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+@media (max-width: 769px) {
+  .basic-filter-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px;
+  }
+}

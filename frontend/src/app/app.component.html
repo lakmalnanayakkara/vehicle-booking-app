@@ -19,7 +19,7 @@
         <button class="side-nav-btn me-2 px-2 py-1" (click)="sideNavOpen()">
           <span class="navbar-toggler-icon side-nav-btn-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">TripClo</a>
+        <a class="navbar-brand" routerLink="">TripClo</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,7 +34,9 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" routerLink="/"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="/sign-in">Sign In</a>

@@ -6,15 +6,29 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import moment from 'moment';
 import { Moment } from 'moment';
+import { DocumentType, TransitionType } from '../interface/enums/common.enum';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS,
+} from '@angular/material/core';
 import { VehicleService } from '../services/vehicle.service';
-import { VehicleSaveDetails } from '../interface/vehicle-interface';
-import { TransitionType, DocumentType } from '../interface/enums/common.enum';
+import { MY_FORMATS } from '../shared/date-format';
 
 @Component({
   selector: 'app-add-new-vehicle',
   standalone: false,
   templateUrl: './add-new-vehicle.component.html',
   styleUrl: './add-new-vehicle.component.css',
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class AddNewVehicleComponent {
   floatLabelControl: any;
@@ -93,27 +107,27 @@ export class AddNewVehicleComponent {
     );
 
     formData.append(
-      this.vehicleDocsImages[1].type,
+      `${this.vehicleDocsImages[1].type}`,
       this.vehicleDocsImages[1].file
     );
     formData.append(
-      this.vehicleDocsImages[2].type,
+      `${this.vehicleDocsImages[2].type}`,
       this.vehicleDocsImages[2].file
     );
     formData.append(
-      this.vehicleDocsImages[3].type,
+      `${this.vehicleDocsImages[3].type}`,
       this.vehicleDocsImages[3].file
     );
     formData.append(
-      this.vehicleDocsImages[4].type,
+      `${this.vehicleDocsImages[4].type}`,
       this.vehicleDocsImages[4].file
     );
     formData.append(
-      this.vehicleDocsImages[5].type,
+      `${this.vehicleDocsImages[5].type}`,
       this.vehicleDocsImages[5].file
     );
     formData.append(
-      this.vehicleDocsImages[0].type,
+      `${this.vehicleDocsImages[0].type}`,
       this.vehicleDocsImages[0].file
     );
 
