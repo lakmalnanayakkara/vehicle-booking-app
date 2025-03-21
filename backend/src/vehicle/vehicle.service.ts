@@ -60,6 +60,7 @@ export class VehicleService {
         await fs.promises.writeFile(filePath, file.buffer);
 
         const vehicleDet = this.vehicleDocsRepo.create({
+          vehicle_id: savedVehicle.id,
           name: newFileName,
           path: filePath,
           last_modified: new Date(),

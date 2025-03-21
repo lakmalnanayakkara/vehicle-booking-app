@@ -6,6 +6,9 @@ export class VehicleDocs implements VehicleDocumentDetails {
   @PrimaryGeneratedColumn('uuid', { name: 'vehicle_doc_id' })
   id: number;
 
+  @Column({ name: 'vehicle_id', type: 'varchar', nullable: false })
+  vehicle_id: string;
+
   @Column({ name: 'driving_license_front', type: 'varchar', nullable: false })
   name: string;
 
