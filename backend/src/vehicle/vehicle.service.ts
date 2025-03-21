@@ -59,14 +59,19 @@ export class VehicleService {
 
         await fs.promises.writeFile(filePath, file.buffer);
 
-        documents.push({
+        const vehicleDet = this.vehicleDocsRepo.create({
           name: newFileName,
           path: filePath,
           last_modified: new Date(),
         });
+
+        documents.push(vehicleDet);
       }
     }
 
+    if (documents.length > 0) {
+      await this.vehicleDocsRepo.save(documents);
+    }
     return savedVehicle;
   }
 }
