@@ -9,7 +9,7 @@ export interface VehicleDocuments {
 }
 
 export interface VehicleDetails {
-  username: string;
+  username?: string;
   vehicle_manufacturer_year: string;
   brand: string;
   transitionType: TransitionType;
@@ -22,4 +22,8 @@ export interface VehicleDocumentDetails {
   name: string;
   path: string;
   last_modified: Date;
+}
+
+export interface FullVehicleDetails extends VehicleDetails{
+  docs:VehicleDocuments[];
 }

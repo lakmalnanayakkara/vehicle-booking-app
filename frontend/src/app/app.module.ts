@@ -41,6 +41,9 @@ import {
 } from '@angular/material-moment-adapter';
 import { VehicleService } from './services/vehicle.service';
 import { CarListScreenComponent } from './car-list-screen/car-list-screen.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,7 @@ import { CarListScreenComponent } from './car-list-screen/car-list-screen.compon
     AddNewVehicleComponent,
     ImageUploadComponent,
     CarListScreenComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,8 @@ import { CarListScreenComponent } from './car-list-screen/car-list-screen.compon
     MatTimepickerModule,
     MatFormFieldModule,
     MatInputModule,
+    SidebarModule,
+    ButtonModule,
     MatButtonModule,
     AsyncPipe,
     MatStepperModule,

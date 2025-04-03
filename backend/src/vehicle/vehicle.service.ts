@@ -50,6 +50,8 @@ export class VehicleService {
 
     const documents: VehicleDocumentDetails[] = [];
 
+    
+
     for (const [fieldName, fileArray] of Object.entries(files)) {
       if (fileArray?.length) {
         const file = fileArray[0];
@@ -74,5 +76,10 @@ export class VehicleService {
       await this.vehicleDocsRepo.save(documents);
     }
     return savedVehicle;
+  }
+
+ async getVehiclesByUserName(username:string){
+    const det = await this.vehicleRepo.findBy({username:username}) ;   
+    this.vehicleDocsRepo.findBy({vehicle_id:det[0].id})
   }
 }

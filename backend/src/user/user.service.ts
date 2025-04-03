@@ -10,13 +10,26 @@ import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { AuthService } from './../auth/auth.service';
 import type { UserSignInDTO } from './dto/user-signin.dto';
+import { Vehicle } from 'src/vehicle/entity/vehicle.entity';
+import { UserProfileDetailsDTO} from './dto/user-profile-details.dto';
+import { VehicleService } from 'src/vehicle/vehicle.service';
 
 @Injectable()
 export class UserService {
+
+ 
   constructor(
     @InjectRepository(User) private userRepo: Repository<User>,
-    private authService: AuthService,
+    
+    @InjectRepository(Vehicle) private vehicleRepo: Repository<Vehicle>,
+
+    private authService: AuthService,  
+
+    private vehicleService: VehicleService,
+
   ) {}
+
+ 
 
   public async userSignUp(userSignUpDTO: UserSignUpDTO): Promise<any> {
     const {
@@ -74,4 +87,33 @@ export class UserService {
       };
     }
   }
+  
+
+  public async getUserProfileByUsername(username: string): Promise<UserProfileDetailsDTO> {
+    const user = await this.userRepo.findOne({
+      where:{username},
+      relations:['vehicles'],
+    });
+    if(!user){
+      throw new Error('User not found');
+    }
+
+    const userProfile:User = {
+      name: user.name,
+      address: user.address,
+      nicNumber: user.nicNumber,
+      phoneNumber: user.phoneNumber,
+      email: user.email,
+      isActive: user.isActive,
+      username: user.username,
+      role: user.role,
+      id: '',
+      password: '',
+    };
+
+  await this.vehicleService.getVehiclesByUserName(username);
+  return userProfile;
+
+}
+
 }

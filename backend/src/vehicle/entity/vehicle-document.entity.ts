@@ -9,12 +9,12 @@ export class VehicleDocs implements VehicleDocumentDetails {
   @Column({ name: 'vehicle_id', type: 'varchar', nullable: false })
   vehicle_id: string;
 
-  @Column({ name: 'driving_license_front', type: 'varchar', nullable: false })
+  @Column({ name: 'file_name', type: 'varchar', nullable: false })
   name: string;
 
-  @Column({ name: 'driving_license_back', type: 'varchar', nullable: false })
+  @Column({ name: 'file_path', type: 'varchar', nullable: false })
   path: string;
 
-  @Column({ name: 'renewing_license', type: 'varchar', nullable: false })
+  @Column({ name: 'last_modified', type: 'varchar', nullable: false })
   last_modified: Date;
 }
