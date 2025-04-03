@@ -25,5 +25,5 @@ export interface VehicleDocumentDetails {
 }
 
 export interface FullVehicleDetails extends VehicleDetails{
-  docs:VehicleDocuments[];
+  docs:VehicleDocumentDetails[];
 }

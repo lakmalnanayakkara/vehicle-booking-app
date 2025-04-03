@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="d-flex flex-column text-white bg-dark mt-3 col-2 col-md-2 col-sm-4 ">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="bi me-2 fs-4">Sidebar</span>
+    </a>
+    <hr>
+    <ul class="nav flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active " aria-current="page"  style="background-color: blue; color: white;">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Orders
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          Products
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Customers
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <strong>mdo</strong>
+      </a>
+    
+    </div>
+  </div>
+<!-- 
+  <div class="d-flex col-2 col-md-2">
+    <p-sidebar [(visible)]="sidebarVisible">
+      <div class="d-flex flex-column text-white bg-dark mt-5 ">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <span class="bi me-2 fs-4">Sidebar</span>
+        </a>
+        <hr>
+        <ul class="nav flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link active " aria-current="page"  style="background-color: blue; color: white;">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+              Orders
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+              Products
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+              Customers
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <strong>mdo</strong>
+          </a>
+        
+        </div>
+      </div>
+    </p-sidebar>
+    <p-button 
+    (onClick)="sidebarVisible = true; hideButton = true" 
+    [ngStyle]="{'visibility': hideButton ? 'hidden' : 'visible'}"
+    class="navbar-toggler-icon side-nav-btn-icon" 
+    icon="pi pi-bars">
+  </p-button>
+  
+    
+    
+</div> -->
+
+<div class="container-fluid col-9 col-md-8 col-sm-8"  style="padding-top: 75px;">
+    <div class="row  justify-content-center">
+    <mat-card class="profile-card col-10">
+      <mat-card-title class="text-center pt-3">Profile Details</mat-card-title>
+  
+      <div *ngIf="!isEditing">
+        <p><strong>Name:</strong> {{ user.name }}</p>
+
+        <p><strong>NIC Number:</strong> {{ user.email }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Address:</strong> {{ user.email }}</p>
+        <p><strong>Phone Number:</strong> {{ user.email }}</p>
+        
+        <button mat-raised-button color="primary" (click)="enableEdit()">Edit</button>
+      </div>
+  
+      <form *ngIf="isEditing" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+        <div class="d-flex flex-column">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>NIC Number</mat-label>
+          <input matInput formControlName="nic_number">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="pNumber">
+        </mat-form-field>
+        </div>
+  
+        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-raised-button color="warn" (click)="cancelEdit()">Cancel</button>
+      </form>
+    </mat-card>
+  </div>
+</div>
+</div>

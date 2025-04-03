@@ -10,8 +10,7 @@ import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { AuthService } from './../auth/auth.service';
 import type { UserSignInDTO } from './dto/user-signin.dto';
-import { Vehicle } from 'src/vehicle/entity/vehicle.entity';
-import { UserProfileDetailsDTO} from './dto/user-profile-details.dto';
+//import { UserProfileDetailsDTO} from './dto/user-profile-details.dto';
 import { VehicleService } from 'src/vehicle/vehicle.service';
 
 @Injectable()
@@ -20,11 +19,7 @@ export class UserService {
  
   constructor(
     @InjectRepository(User) private userRepo: Repository<User>,
-    
-    @InjectRepository(Vehicle) private vehicleRepo: Repository<Vehicle>,
-
     private authService: AuthService,  
-
     private vehicleService: VehicleService,
 
   ) {}
@@ -89,11 +84,12 @@ export class UserService {
   }
   
 
-  public async getUserProfileByUsername(username: string): Promise<UserProfileDetailsDTO> {
+  public async getUserProfileByUsername(username: string): Promise<any> {
     const user = await this.userRepo.findOne({
       where:{username},
-      relations:['vehicles'],
     });
+    console.log("USER",user);
+    
     if(!user){
       throw new Error('User not found');
     }
@@ -111,7 +107,9 @@ export class UserService {
       password: '',
     };
 
-  await this.vehicleService.getVehiclesByUserName(username);
+  const vehicle = await this.vehicleService.getVehiclesByUserName(username);
+  console.log("Vehicle",vehicle);
+  
   return userProfile;
 
 }

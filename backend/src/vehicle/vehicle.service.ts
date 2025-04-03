@@ -17,7 +17,7 @@ export class VehicleService {
     @InjectRepository(Vehicle) private vehicleRepo: Repository<Vehicle>,
     @InjectRepository(VehicleDocs)
     private vehicleDocsRepo: Repository<VehicleDocs>,
-  ) {}
+  ) { }
 
   public async saveVehicle(
     vehicleDetailsDTO: VehicleDetailsDTO,
@@ -50,7 +50,7 @@ export class VehicleService {
 
     const documents: VehicleDocumentDetails[] = [];
 
-    
+
 
     for (const [fieldName, fileArray] of Object.entries(files)) {
       if (fileArray?.length) {
@@ -78,8 +78,9 @@ export class VehicleService {
     return savedVehicle;
   }
 
- async getVehiclesByUserName(username:string){
-    const det = await this.vehicleRepo.findBy({username:username}) ;   
-    this.vehicleDocsRepo.findBy({vehicle_id:det[0].id})
+  async getVehiclesByUserName(username: string) {
+    const det = await this.vehicleRepo.findBy({ username: username });
+    const docs = await this.vehicleDocsRepo.findBy({ vehicle_id: det[0].id })
+    return { det, docs }
   }
 }

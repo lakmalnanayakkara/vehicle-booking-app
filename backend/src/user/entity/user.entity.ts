@@ -3,7 +3,7 @@ import type {
   UserSignInDetails,
   UserSignUpDetails,
 } from 'src/interface/user.interface';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity,  PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('users')
 export class User implements UserSignUpDetails, UserSignInDetails {
@@ -33,7 +33,7 @@ export class User implements UserSignUpDetails, UserSignInDetails {
   @Column({ name: 'username', type: 'varchar', nullable: false, unique: true })
   username: string;
 
-  @Column({ name: 'password', type: 'varchar', nullable: false })
+  @Column({ name: 'password', type: 'varchar', nullable: false })  
   password: string;
 
   @Column({ name: 'user_role', type: 'varchar', nullable: false })

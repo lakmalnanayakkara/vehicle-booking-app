@@ -1,6 +1,6 @@
 import { TransitionType } from 'src/enums/vehicle.enums';
 import type { VehicleDetails } from 'src/interface/vehicle.interface';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity ,PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('vehicle')
 export class Vehicle implements VehicleDetails {
@@ -39,4 +39,6 @@ export class Vehicle implements VehicleDetails {
 
   @Column({ name: 'specs', type: 'varchar', nullable: true })
   specification: string;
+
+
 }
