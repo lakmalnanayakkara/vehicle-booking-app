@@ -15,10 +15,18 @@ export interface JwtConfig {
   validity: number;
 }
 
+export interface EmailConfig {
+  host: string;
+  port: string;
+  user: string;
+  secret: string;
+}
+
 @Injectable()
 export class ConfigurationService {
   private databaseConfig: DatabaseConfig;
   private jwtConfig: JwtConfig;
+  private emailConfig: EmailConfig;
 
   constructor(private readonly configService: ConfigService) {
     this.databaseConfig = {
@@ -34,6 +42,13 @@ export class ConfigurationService {
       secret_key: configService.get<string>('SECRET_KEY')!,
       validity: configService.get<number>('TOKEN_VALIDITY')!,
     };
+
+    this.emailConfig = {
+      host: configService.get<string>('EMAIL_HOST')!,
+      port: configService.get<string>('EMAIL_PORT')!,
+      user: configService.get<string>('EMAIL_USER')!,
+      secret: configService.get<string>('EMAIL_SECRET_KEY')!,
+    };
   }
 
   public getDbConfig() {
@@ -42,5 +57,9 @@ export class ConfigurationService {
 
   public getJwtConfig() {
     return this.jwtConfig;
+  }
+
+  public getEmailConfig() {
+    return this.emailConfig;
   }
 }
