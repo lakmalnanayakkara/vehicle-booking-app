@@ -7,6 +7,7 @@ import { BookingComponent } from './booking/booking.component';
 import { AddNewVehicleComponent } from './add-new-vehicle/add-new-vehicle.component';
 import { CarListScreenComponent } from './car-list-screen/car-list-screen.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
     path: 'search',
     component: FilterSearchComponent,
   },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+
 ];
 
 @NgModule({

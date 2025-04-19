@@ -44,3 +44,4 @@ export class VehicleDetailsDTO implements VehicleDetails {
   @IsString()
   specification: string;
 }
+

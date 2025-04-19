@@ -10,13 +10,21 @@ import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { AuthService } from './../auth/auth.service';
 import type { UserSignInDTO } from './dto/user-signin.dto';
+//import { UserProfileDetailsDTO} from './dto/user-profile-details.dto';
+import { VehicleService } from 'src/vehicle/vehicle.service';
 
 @Injectable()
 export class UserService {
+
+ 
   constructor(
     @InjectRepository(User) private userRepo: Repository<User>,
-    private authService: AuthService,
+    private authService: AuthService,  
+    private vehicleService: VehicleService,
+
   ) {}
+
+ 
 
   public async userSignUp(userSignUpDTO: UserSignUpDTO): Promise<any> {
     const {
@@ -74,4 +82,36 @@ export class UserService {
       };
     }
   }
+  
+
+  public async getUserProfileByUsername(username: string): Promise<any> {
+    const user = await this.userRepo.findOne({
+      where:{username},
+    });
+    console.log("USER",user);
+    
+    if(!user){
+      throw new Error('User not found');
+    }
+
+    const userProfile:User = {
+      name: user.name,
+      address: user.address,
+      nicNumber: user.nicNumber,
+      phoneNumber: user.phoneNumber,
+      email: user.email,
+      isActive: user.isActive,
+      username: user.username,
+      role: user.role,
+      id: '',
+      password: '',
+    };
+
+  const vehicle = await this.vehicleService.getVehiclesByUserName(username);
+  console.log("Vehicle",vehicle);
+  
+  return userProfile;
+
+}
+
 }

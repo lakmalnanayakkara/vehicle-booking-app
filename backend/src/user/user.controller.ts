@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserSignUpDTO } from './dto/user-signup.dto';
 import { UserSignInDTO } from './dto/user-signin.dto';
@@ -8,6 +8,7 @@ import { RolesAuthGuard } from 'src/auth/guards/roles.guard';
 import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
 import { UserRoles } from 'src/enums/roles.enum';
 import { Public } from 'src/auth/decorators/public.decorator';
+//import { UserProfileDetailsDTO } from './dto/user-profile-details.dto';
 
 @Controller('api/v1/user')
 export class UserController {
@@ -51,4 +52,12 @@ export class UserController {
   protectedRoute() {
     return { message: 'This is a protected route' };
   }
+
+@Get('/username/:username')
+@Public(true)
+ async getUserProfile(@Param('username') username: string):Promise<any> {
+
+  return this.userService.getUserProfileByUsername(username);
+
+}
 }

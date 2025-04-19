@@ -12,4 +12,6 @@ export class UserService {
   userSignUp(userSignUp: UserSignUp) {
     return this.http.post(`${this.baseUrl}/api/v1/user/sign-up`, userSignUp);
   }
+
+  
 }
